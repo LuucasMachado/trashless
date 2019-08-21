@@ -1,0 +1,2 @@
+class RemovalOrder < ApplicationRecord
+end

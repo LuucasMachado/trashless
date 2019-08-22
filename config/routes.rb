@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: "home#index"
  
   resources :users do
-    resources :removal_orders, only: %i[index show new create]
+    resources :removal_orders, only: %i[index show new create edit update]
   end  
 end

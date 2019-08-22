@@ -1,0 +1,10 @@
+<h1>Detalhes do pedido</h1>
+  <ul>
+    <li>Peso: <%= @removal_order.weight %></li>
+    <li>Data de retirada: <%= @removal_order.removal_date_start %></li>
+    <li>Limite de retirada: <%= @removal_order.removal_date_end %></li>
+    <li>Endereço: <%= @removal_order.address %></li>
+  </ul>  
+  
+    <%= link_to 'Editar', edit_user_removal_order_path %>
+

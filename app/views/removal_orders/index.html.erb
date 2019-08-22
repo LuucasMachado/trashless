@@ -1,3 +1,6 @@
 <h1>Pedidos em aberto</h1>
 
-<%= render @removal_orders %>
+<ul>
+  <li><%= render partial: "removal_order", locals: { removal_orders: @removal_orders } %><li>
+</ul>
+

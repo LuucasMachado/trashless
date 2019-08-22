@@ -11,7 +11,7 @@ class RemovalOrdersController < ApplicationController
   end  
 
   def create
-    #@user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     @removal_order = RemovalOrder.new(removal_order_params)
     @removal_order.open!
     @removal_order.save
@@ -21,6 +21,19 @@ class RemovalOrdersController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @removal_order = RemovalOrder.find(params[:id])
+  end  
+
+  def edit
+    @user = User.find(params[:user_id])
+    @removal_order = RemovalOrder.find(params[:id])
+  end  
+
+  def update
+    @user = User.find(params[:user_id])
+    @removal_order = RemovalOrder.find(params[:id])
+    if @removal_order.update(removal_order_params)
+      redirect_to user_removal_order_path(@removal_order)
+    end  
   end  
 
   private

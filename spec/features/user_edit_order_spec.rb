@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-feature 'User view all orders open'  do
+feature 'User edit order'  do
   scenario 'successufully' do 
     user = User.create(email: 'jo@gmail.com', password: '12345678')
 
@@ -17,12 +17,6 @@ feature 'User view all orders open'  do
    click_on 'Logar'
    click_on 'Todos pedidos em aberto'
    click_on 'Ver detalhes'
-     
-   #expect(page).to have_content('Peso: 10')
-   #expect(page).to have_content('Data de retirada: 01/09/2019')
-   #expect(page).to have_content('Limite de retirada: 02/09/2019')
-   #expect(page).to have_content('Endereço: rua das bolinhas n 02')
-
    click_on 'Editar'
 
    fill_in 'Peso', with: '12'
@@ -36,4 +30,6 @@ feature 'User view all orders open'  do
    expect(page).to have_content('Limite de retirada: 03/09/2019')
    expect(page).to have_content('Endereço: rua das bananas n 02')
   end
+
+  
 end

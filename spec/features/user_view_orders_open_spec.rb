@@ -35,4 +35,5 @@ feature 'User view all orders open'  do
      expect(page).not_to have_content(open_removal_2.removal_date_end)
      expect(page).not_to have_content(open_removal_2.address)
   end
+  
 end 

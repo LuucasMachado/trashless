@@ -4,6 +4,7 @@ class RemovalOrdersController < ApplicationController
   end
 
   def show
+    @removal_order = RemovalOrder.find(params[:id])
   end
 
   def create

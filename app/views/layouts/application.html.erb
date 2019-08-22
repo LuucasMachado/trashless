@@ -10,12 +10,11 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
+    <nav class="navbar navbar-default">
+      <a class="navbar-brand" href="#">Navbar</a>
         <% if user_signed_in? %>
-          <li><%= link_to 'Registrar coleta', new_removal_order_path %></li>
+          <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
         <% end %>
-      </ul>
     </nav>
     <%= yield %>
   </body>

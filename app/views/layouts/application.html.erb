@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Registrar coleta', new_removal_order_path %></li>
+        <% end %>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

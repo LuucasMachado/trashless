@@ -3,8 +3,14 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.new
   end
 
+  def show
+  end
+
   def create
-    
+    @removal_order = RemovalOrder.new(removal_order_params)
+    if @removal_order.save 
+      redirect_to @removal_order
+    end
   end
 
   private

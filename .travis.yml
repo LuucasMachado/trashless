@@ -1,19 +1,19 @@
 language: ruby
 
- rvm:
+rvm:
   - 2.6.3
 
- env:
+env:
   global:
     - RAILS_ENV=test
 
- before_install:
+before_install:
   - gem install bundler
 
- before_script:
+before_script:
   - gem install bundle-audit
 
- script:
+script:
   - RAILS_ENV=test bundle exec rake db:test:prepare
   - bundle exec rspec
   - bundle exec rubocop --config .rubocop.yml

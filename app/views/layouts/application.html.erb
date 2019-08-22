@@ -12,9 +12,16 @@
   <body>
     <nav class="navbar navbar-default">
       <a class="navbar-brand" href="#">Trashless</a>
+      <% if user_signed_in? %>
+        <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
+      <% end %>
+      <li>
         <% if user_signed_in? %>
-          <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Entrar', new_user_session_path %>
         <% end %>
+      </li>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

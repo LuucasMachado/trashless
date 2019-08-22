@@ -6,7 +6,7 @@ feature 'User register removal order' do
 
     visit root_path
     fill_in 'Email', with: 'lucas@hotmail.com'
-    fill_in 'Password', with: user.password
+    fill_in 'Senha', with: user.password
     click_on 'Log in'
     click_on 'Registrar coleta'
     fill_in 'Peso:', with: '244'
@@ -25,7 +25,7 @@ feature 'User register removal order' do
 
     visit root_path
     fill_in 'Email', with: 'lucas@hotmail.com'
-    fill_in 'Password', with: user.password
+    fill_in 'Senha', with: user.password
     click_on 'Log in'
     click_on 'Registrar coleta'
     fill_in 'Peso:', with: ''

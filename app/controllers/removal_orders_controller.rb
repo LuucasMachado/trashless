@@ -10,7 +10,11 @@ class RemovalOrdersController < ApplicationController
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
     if @removal_order.save 
+      flash[:notice] = 'Pedido de remoção criado com sucesso'
       redirect_to @removal_order
+    else
+      flash[:notice] = 'Não foi possível salvar o pedido de remoçāo'
+      render :new
     end
   end
 

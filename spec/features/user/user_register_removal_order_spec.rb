@@ -20,4 +20,20 @@ feature 'User register removal order' do
     expect(page).to have_content 'Data retirada fim: 14/07/2019'
     expect(page).to have_content 'Endereço de retirada: Rua Ruan Juan Jackson'
   end
+  scenario 'and must fill in all fields' do
+    user = create(:user, email: 'lucas@hotmail.com' )
+
+    visit root_path
+    fill_in 'Email', with: 'lucas@hotmail.com'
+    fill_in 'Password', with: user.password
+    click_on 'Log in'
+    click_on 'Registrar coleta'
+    fill_in 'Peso:', with: ''
+    fill_in 'Data retirada inicio:', with: ''
+    fill_in 'Data retirada fim:', with: ''
+    fill_in 'Endereço de retirada:', with: ''
+    click_on 'Registra coleta'
+
+    expect(page).to have_content 'Não foi possível salvar o pedido de remoçāo'
+  end
 end

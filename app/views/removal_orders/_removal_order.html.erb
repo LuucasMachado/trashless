@@ -1,0 +1,9 @@
+
+<%= @removal_orders.each do |order| %>
+  <ul>
+    <li><%= order.weight %></li>
+    <li><%= order.removal_date_start %></li>
+    <li><%= order.removal_date_end %></li>
+    <li><%= order.address %></li>
+  </ul>  
+<% end %>

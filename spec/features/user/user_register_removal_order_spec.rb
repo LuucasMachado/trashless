@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User register removal order' do
   scenario 'successfully' do
-    user = create(:user, email: 'lucas@hotmail.com' )
+    user = create(:user, email: 'lucas@hotmail.com')
 
     visit root_path
     fill_in 'Email', with: 'lucas@hotmail.com'
@@ -21,7 +21,7 @@ feature 'User register removal order' do
     expect(page).to have_content 'Endereço de retirada: Rua Ruan Juan Jackson'
   end
   scenario 'and must fill in all fields' do
-    user = create(:user, email: 'lucas@hotmail.com' )
+    user = create(:user, email: 'lucas@hotmail.com')
 
     visit root_path
     fill_in 'Email', with: 'lucas@hotmail.com'

@@ -15,11 +15,19 @@
       <% if user_signed_in? %>
         <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
       <% end %>
+      <% if cooperative_signed_in? %>
+        <%= link_to 'Registrar coletador', new_collector_path, class: 'navbar-brand' %>
+      <% end %>
       <li>
         <% if user_signed_in? %>
           <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Entrar', new_user_session_path %>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= link_to 'Sair', destroy_cooperative_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Logar como filial', new_cooperative_session_path, class: 'navbar-brand' %>
         <% end %>
       </li>
     </nav>

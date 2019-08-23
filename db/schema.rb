@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_001229) do
+ActiveRecord::Schema.define(version: 2019_08_23_005701) do
+
+  create_table "collectors", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "contact"
+    t.string "withdrawal"
+    t.integer "cooperative_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cooperative_id"], name: "index_collectors_on_cooperative_id"
+  end
+
+  create_table "cooperatives", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_cooperatives_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_cooperatives_on_reset_password_token", unique: true
+  end
 
   create_table "removal_orders", force: :cascade do |t|
     t.decimal "weight"

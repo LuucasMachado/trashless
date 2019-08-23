@@ -9,7 +9,6 @@ class RemovalOrdersController < ApplicationController
 
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
-    @removal_order.open!
     @removal_order.save
     redirect_to @removal_order
   end
@@ -25,8 +24,8 @@ class RemovalOrdersController < ApplicationController
   def update
     @removal_order = RemovalOrder.find(params[:id])
     if @removal_order.update(removal_order_params)
-      redirect_to @removal_order
       flash[:notice] = 'Pedido editado com sucesso!'
+      redirect_to @removal_order
     else
       flash[:error] = 'Você deve preencher todos os campos'
       render :edit

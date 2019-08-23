@@ -1,7 +1,7 @@
 class RemovalOrdersController < ApplicationController
   
   def index
-    @removal_orders = RemovalOrder.open
+    @removal_orders = current_user.removal_orders.where(status: :open)
   end
 
   def new

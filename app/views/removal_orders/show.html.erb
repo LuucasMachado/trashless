@@ -4,7 +4,8 @@
     <li>Data de retirada: <%= l @removal_order.removal_date_start, format: :custom %></li>
     <li>Limite de retirada: <%= l @removal_order.removal_date_end, format: :custom  %></li>
     <li>Endereço: <%= @removal_order.address %></li>
-  </ul>  
-  
-    <%= link_to 'Editar', edit_removal_order_path %>
+  </ul>
 
+    <%= link_to 'Editar', edit_removal_order_path %>
+    <%= link_to 'Apagar pedido', @removal_order, method: :delete,
+        data: { confirm: " Você quer deletar?"} %>

@@ -1,0 +1,15 @@
+<%= form_for @collector do |f| %>
+  <%= f.label :name, 'Nome:' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :address, 'Endereço:'  %>
+  <%= f.text_field :address %>
+
+  <%= f.label :contact, 'Contato:' %>
+  <%= f.text_field :contact %>
+
+  <%= f.label :withdrawal, 'Meio de retirada:' %>
+  <%= f.text_field :withdrawal %>
+
+  <%= f.submit 'Registra coletador' %>
+<% end %>

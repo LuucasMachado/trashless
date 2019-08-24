@@ -2,18 +2,18 @@ require 'rails_helper'
 
 feature 'Cooperative register collector' do
   scenario 'successfully' do
-    user = create(:cooperative, email: 'lucas@hotmail.com')
+    user = create(:cooperative)
     visit root_path
     click_on 'Logar como filial'
-    fill_in 'Email', with: 'lucas@hotmail.com'
+    fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Log in'
     click_on 'Registrar coletador'
-    byebug
     fill_in 'Nome:', with: 'Stephen Curry do Brasil'
     fill_in 'Endereço:', with: 'Rua pedro joao 223'
     fill_in 'Contato:', with: '11986215723'
     fill_in 'Meio de retirada:', with: 'Carro manual'
+      byebug
     click_on 'Registra coletador'
 
     expect(page).to have_content 'Coletador criado com sucesso'

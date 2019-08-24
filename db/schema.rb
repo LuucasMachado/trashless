@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_005701) do
+ActiveRecord::Schema.define(version: 2019_08_24_195236) do
 
   create_table "collectors", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 2019_08_23_005701) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_cooperatives_on_email", unique: true
     t.index ["reset_password_token"], name: "index_cooperatives_on_reset_password_token", unique: true
+  end
+
+  create_table "garbage_mans", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "contact"
+    t.string "withdrawal"
+    t.integer "cooperative_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cooperative_id"], name: "index_garbage_mans_on_cooperative_id"
   end
 
   create_table "removal_orders", force: :cascade do |t|

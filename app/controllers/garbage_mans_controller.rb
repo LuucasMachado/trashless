@@ -1,10 +1,10 @@
-class CollectorsController < ApplicationController
+class GarbageMansController < ApplicationController
   def new
-    @collector = Collector.new
+    @collector = GarbageMan.new
   end
 
   def create
-    @collector = Collector.new(removal_order_params)
+    @collector = GarbageMan.new(removal_order_params)
     if @collector.save
       flash[:notice] = 'Coletador criado com sucesso'
       redirect_to @collector

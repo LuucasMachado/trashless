@@ -13,7 +13,6 @@ feature 'Cooperative register collector' do
     fill_in 'Endereço:', with: 'Rua pedro joao 223'
     fill_in 'Contato:', with: '11986215723'
     fill_in 'Meio de retirada:', with: 'Carro manual'
-      byebug
     click_on 'Registra coletador'
 
     expect(page).to have_content 'Coletador criado com sucesso'

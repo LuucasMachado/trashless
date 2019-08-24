@@ -22,7 +22,7 @@
         <% if user_signed_in? %>
           <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Entrar', new_user_session_path %>
+          <%= link_to 'Logar', new_user_session_path %>
         <% end %>
         <% if user_signed_in? %>
           <%= link_to 'Sair', destroy_cooperative_session_path, method: :delete %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_195236) do
+ActiveRecord::Schema.define(version: 2019_08_25_170406) do
 
   create_table "collectors", force: :cascade do |t|
     t.string "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_195236) do
     t.index ["reset_password_token"], name: "index_cooperatives_on_reset_password_token", unique: true
   end
 
-  create_table "garbage_mans", force: :cascade do |t|
+  create_table "garbage_men", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "contact"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_195236) do
     t.integer "cooperative_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cooperative_id"], name: "index_garbage_mans_on_cooperative_id"
+    t.index ["cooperative_id"], name: "index_garbage_men_on_cooperative_id"
   end
 
   create_table "removal_orders", force: :cascade do |t|

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
   resources :removal_orders
-  resources :garbage_mans
+  resources :garbage_mens
 end

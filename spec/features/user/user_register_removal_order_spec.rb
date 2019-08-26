@@ -21,12 +21,13 @@ feature 'User register removal order' do
     expect(page).to have_content 'Endereço de retirada: Rua Ruan Juan Jackson'
   end
   scenario 'and must fill in all fields' do
-    user = create(:user, email: 'lucas@hotmail.com')
+    user = User.create!(email: 'lucas@hotmail.com', password: '123321')
 
     visit root_path
     fill_in 'Email', with: 'lucas@hotmail.com'
     fill_in 'Senha', with: user.password
     click_on 'Log in'
+    byebug
     click_on 'Registrar coleta'
     fill_in 'Peso', with: ''
     fill_in 'Data retirada inicio', with: ''

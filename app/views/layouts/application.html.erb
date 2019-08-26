@@ -19,12 +19,20 @@
         <% if user_signed_in? %>
           <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Entrar', new_user_session_path %>
+          <%= link_to 'Log in', new_user_session_path %>
         <% end %>
       </li>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+   
+   <% if user_signed_in? %>
+     <p><%= link_to "Todos pedidos em aberto", removal_orders_path %></p>
+   <% end %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <p class="error"><%= flash[:error] %></p>
     <%= yield %>
   </body>
 </html>

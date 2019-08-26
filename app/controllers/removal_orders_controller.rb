@@ -1,4 +1,6 @@
 class RemovalOrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @removal_order = RemovalOrder.new
   end

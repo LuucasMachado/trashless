@@ -13,6 +13,10 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.find(params[:id])
   end
 
+  def edit
+    @removal_order = RemovalOrder.find(params[:id])
+  end
+
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
     @removal_order.user = current_user

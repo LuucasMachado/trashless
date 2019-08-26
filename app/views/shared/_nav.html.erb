@@ -7,8 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <% if user_signed_in? %>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <%= link_to 'Registrar coleta', new_removal_order_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Todos pedidos em aberto", removal_orders_path, class: 'nav-link' %>
             </li>
             <% end %>
             <% if cooperative_signed_in? %>

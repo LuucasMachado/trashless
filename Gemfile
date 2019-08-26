@@ -11,7 +11,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
@@ -22,14 +21,6 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'simplecov', require: false
-end
-
-group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop', require: false
-  gem 'rubocop-rails'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 

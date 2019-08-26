@@ -1,6 +1,6 @@
 <p>Peso: <%= @removal_order.weight %> kg</p>
-<p>Data retirada inicio: <%= l @removal_order.removal_date_start %></p>
-<p>Data retirada fim: <%= l @removal_order.removal_date_end %></p>
-<p>Endereço de retirada: <%= @removal_order.address %></p>
+<p>Data retirada inicio: <%= l @removal_order.removal_date_start, format: :custom %></p>
+<p>Data retirada fim: <%= l @removal_order.removal_date_end, format: :custom %></p>
+<p>Endereço de retirada: <%= @removal_order.address, format: :custom %></p>
 
 

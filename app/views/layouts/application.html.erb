@@ -10,6 +10,14 @@
   </head>
 
   <body>
+   
+   <% if user_signed_in? %>
+     <p><%= link_to "Todos pedidos em aberto", removal_orders_path %></p>
+   <% end %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= flash[:error] %>
     <%= yield %>
   </body>
 </html>

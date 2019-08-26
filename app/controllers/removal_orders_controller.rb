@@ -10,7 +10,6 @@ class RemovalOrdersController < ApplicationController
 
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
-    @removal_order.open!
     @removal_order.save
     redirect_to @removal_order
   end

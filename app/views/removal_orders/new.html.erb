@@ -5,16 +5,16 @@
 <% end%>
 
 <%= form_for @removal_order do |f| %>
-  <%= f.label :weight, 'Peso:' %>
+  <%= f.label :weight  %>
   <%= f.text_field :weight %>
 
-  <%= f.label :removal_date_start, 'Data retirada inicio:'  %>
+  <%= f.label :removal_date_start  %>
   <%= f.text_field :removal_date_start %>
 
-  <%= f.label :removal_date_end, 'Data retirada fim:' %>
+  <%= f.label :removal_date_end %>
   <%= f.text_field :removal_date_end %>
 
-  <%= f.label :address, 'Endereço de retirada:' %>
+  <%= f.label :address %>
   <%= f.text_field :address %>
 
   <%= f.submit 'Registra coleta' %>

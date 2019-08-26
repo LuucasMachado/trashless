@@ -1,12 +1,8 @@
----
 pt-BR:
-  date:
-    formats:
-    default: "%d/%m/%Y"
   activerecord:
     errors:
       messages:
-        record_invalid: 'A validação falhou: %{errors}'
+        record_invalid: A validação falhou: %{errors}
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
@@ -223,5 +219,4 @@ pt-BR:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
-      custom: "%d/%m/%Y"
     pm: ''

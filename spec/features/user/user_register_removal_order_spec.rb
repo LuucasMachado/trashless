@@ -9,10 +9,10 @@ feature 'User register removal order' do
     fill_in 'Senha', with: user.password
     click_on 'Log in'
     click_on 'Registrar coleta'
-    fill_in 'Peso:', with: '244'
-    fill_in 'Data retirada inicio:', with: '14/06/2019'
-    fill_in 'Data retirada fim:', with: '14/07/2019'
-    fill_in 'Endereço de retirada:', with: 'Rua Ruan Juan Jackson'
+    fill_in 'Peso', with: '244'
+    fill_in 'Data retirada inicio', with: '14/06/2019'
+    fill_in 'Data retirada fim', with: '14/07/2019'
+    fill_in 'Endereço de retirada', with: 'Rua Ruan Juan Jackson'
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Peso: 244.0 kg'
@@ -28,10 +28,10 @@ feature 'User register removal order' do
     fill_in 'Senha', with: user.password
     click_on 'Log in'
     click_on 'Registrar coleta'
-    fill_in 'Peso:', with: ''
-    fill_in 'Data retirada inicio:', with: ''
-    fill_in 'Data retirada fim:', with: ''
-    fill_in 'Endereço de retirada:', with: ''
+    fill_in 'Peso', with: ''
+    fill_in 'Data retirada inicio', with: ''
+    fill_in 'Data retirada fim', with: ''
+    fill_in 'Endereço de retirada', with: ''
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Não foi possível salvar o pedido de remoçāo'

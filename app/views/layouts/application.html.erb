@@ -10,33 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <a class="navbar-brand" href="#">Trashless</a>
-      <% if user_signed_in? %>
-        <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
-      <% end %>
-      <% if cooperative_signed_in? %>
-        <%= link_to 'Registrar coletador', new_garbage_men_path, class: 'navbar-brand' %>
-      <% end %>
-      <% unless user_signed_in? %>
-        <li>
-          <% if cooperative_signed_in? %>
-            <%= link_to 'Sair', destroy_cooperative_session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'Logar como filial', new_cooperative_session_path, class: 'navbar-brand' %>
-          <% end %>
-        </li>
-      <% end %>
-      <% unless cooperative_signed_in? %>
-      <li>
-        <% if user_signed_in? %>
-          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Logar', new_user_session_path %>
-        <% end %>
-      </li>
-      <% end %>
-    </nav>
+    <%= render "shared/nav" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

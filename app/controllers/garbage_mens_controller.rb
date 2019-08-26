@@ -8,7 +8,6 @@ class GarbageMensController < ApplicationController
     @garbageman = GarbageMen.find(params[:id])
   end
 
-
   def create
     @garbageman = GarbageMen.new(garbageman_params)
     @garbageman.cooperative = current_cooperative
@@ -25,10 +24,9 @@ class GarbageMensController < ApplicationController
 
   def garbageman_params
     params.require(:garbage_men).permit(:name,
-                                          :address,
-                                          :contact,
-                                          :withdrawal,
+                                        :address,
+                                        :contact,
+                                        :withdrawal,
                                         :cooperative_id)
   end
-
 end

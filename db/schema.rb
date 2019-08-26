@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_170406) do
-
-  create_table "collectors", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "contact"
-    t.string "withdrawal"
-    t.integer "cooperative_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cooperative_id"], name: "index_collectors_on_cooperative_id"
-  end
+ActiveRecord::Schema.define(version: 2019_08_26_154539) do
 
   create_table "cooperatives", force: :cascade do |t|
     t.string "email", default: "", null: false

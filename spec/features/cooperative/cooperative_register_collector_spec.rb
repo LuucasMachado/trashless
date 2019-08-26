@@ -4,7 +4,7 @@ feature 'Cooperative register collector' do
   scenario 'successfully' do
     user = create(:cooperative)
     visit root_path
-    click_on 'Logar como filial'
+    click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Log in'
@@ -24,7 +24,7 @@ feature 'Cooperative register collector' do
   scenario 'and must fill in all fields' do
     user = create(:cooperative)
     visit root_path
-    click_on 'Logar como filial'
+    click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Log in'

@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href=<%= root_path %>>TrashLess</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <% if user_signed_in? %>
+            <li class="nav-item active">
+                <%= link_to 'Registrar coleta', new_removal_order_path, class: 'nav-link' %>
+            </li>
+            <% end %>
+            <% if cooperative_signed_in? %>
+            <li class="nav-item">
+                <%= link_to 'Registrar coletador', new_garbage_men_path, class: 'nav-link' %>
+            </li>
+            <% end %>
+            <%# <li class="nav-item">
+                <a class="nav-link" href="#">Preços</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Desativado</a>
+            </li> %>
+            <div class="form-inline my-2 my-lg-0">
+              <% unless user_signed_in? %>
+                <li class="mr-sm-2">
+                  <% if cooperative_signed_in? %>
+                  <%= link_to 'Sair', destroy_cooperative_session_path, method: :delete, class: 'nav-link' %>
+                  <% else %>
+                  <%= link_to 'Logar como Filial', new_cooperative_session_path, class: 'nav-link' %>
+                  <% end %>
+                </li>
+              <% end %>
+              <% unless cooperative_signed_in? %>
+                <li class="mr-sm-2">
+                  <% if user_signed_in? %>
+                  <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                  <% else %>
+                  <%= link_to 'Logar como Usuario', new_user_session_path, class: 'nav-link' %>
+                  <% end %>
+                 </li>
+              <% end %>
+            </div>
+        </ul>
+    </div>
+</nav>

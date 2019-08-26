@@ -35,5 +35,9 @@ feature 'User register removal order' do
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Não foi possível salvar o pedido de remoçāo'
+    expect(page).to have_content 'Peso não pode ficar em branco'
+    expect(page).to have_content 'Data retirada inicio não pode ficar em branco'
+    expect(page).to have_content 'Data retirada inicio não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
   end
 end

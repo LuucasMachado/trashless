@@ -1,0 +1,26 @@
+---
+pt-BR:
+  removal_order:
+    flash:
+      create: 'Remoção criada com sucesso'
+  activerecord:
+    errors:
+      models:
+        removal_order:
+          attributes:
+            weight:
+              blank: 'Peso não pode ficar em branco'  
+            removal_date_start:
+              blank: 'Data retirada inicio não pode ficar em branco'
+            removal_date_end":
+              blank: 'Data retirada fim não pode ficar em branco'
+            address:
+              blank: 'Endereço não pode ficar em branco'
+    models:
+      removal_order: 'Ordem de remoção'
+    attributes:
+      removal_order:
+        weight: 'Peso'
+        removal_date_start: 'Data retirada inicio'
+        removal_date_end": 'Data retirada fim'
+        address: 'Endereço'

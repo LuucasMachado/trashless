@@ -7,7 +7,7 @@ feature 'Cooperative register collector' do
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
-    click_on 'Log in'
+    click_on 'Logar'
     click_on 'Registrar coletador'
     fill_in 'Nome:', with: 'Stephen Curry do Brasil'
     fill_in 'Endereço:', with: 'Rua pedro joao 223'
@@ -27,7 +27,7 @@ feature 'Cooperative register collector' do
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
-    click_on 'Log in'
+    click_on 'Logar'
     click_on 'Registrar coletador'
     fill_in 'Nome:', with: ''
     fill_in 'Endereço:', with: ''

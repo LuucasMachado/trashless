@@ -44,6 +44,8 @@ class RemovalOrdersController < ApplicationController
 
   def accept
     @removal_order = RemovalOrder.find(params[:id])
+    @removal_order.in_progress!
+    
     redirect_to @removal_order
   end
 

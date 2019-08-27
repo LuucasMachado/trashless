@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :cooperatives
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :removal_orders
+  resources :garbage_mens
   root to: "home#index"
-
-  resources :removal_orders  
 end

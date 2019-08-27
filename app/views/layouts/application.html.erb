@@ -10,13 +10,9 @@
   </head>
 
   <body>
-
-   <% if user_signed_in? %>
-     <p><%= link_to "Todos pedidos em aberto", removal_orders_path %></p>
-   <% end %>
-
-    <p class="alert alert-danger"><%= flash[:error] %></p>
-    <p class="alert alert-success"><%= flash[:success] %>
+    <%= render "shared/nav" %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

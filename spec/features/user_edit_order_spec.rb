@@ -11,6 +11,7 @@ feature 'User edit order'  do
                         user: user, status: :open)
 
     visit root_path
+    click_on 'Logar como Usuario'
     fill_in 'Email', with: 'jo@gmail.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Logar'
@@ -19,15 +20,15 @@ feature 'User edit order'  do
     click_on 'Editar'
 
     fill_in 'Peso', with: '12'
-    fill_in 'Data de retirada', with: '02/09/2019'
+    fill_in 'Data retirada inicio', with: '02/09/2019'
     fill_in 'Limite de retirada', with: '03/09/2019'
     fill_in 'Endereço', with: 'rua das bananas n 02'
-    click_on 'Enviar'
+    click_on 'Registra coleta'
     expect(page).to have_content 'Pedido editado com sucesso!'
-    expect(page).to have_content 'Peso: 12'
-    expect(page).to have_content 'Data de retirada: 02/09/2019'
-    expect(page).to have_content 'Limite de retirada: 03/09/2019'
-    expect(page).to have_content 'Endereço: rua das bananas n 02'
+    expect(page).to have_content 'Peso 12.0 kg'
+    expect(page).to have_content 'Data retirada inicio 02/09/2019'
+    expect(page).to have_content 'Data retirada fim 03/09/2019'
+    expect(page).to have_content 'Endereço rua das bananas n 02'
   end
 
   scenario 'unsuccessufully' do
@@ -40,6 +41,7 @@ feature 'User edit order'  do
                         user: user, status: :open)
 
     visit root_path
+    click_on 'Logar como Usuario'
     fill_in 'Email', with: 'jo@gmail.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Logar'
@@ -48,10 +50,10 @@ feature 'User edit order'  do
     click_on 'Editar'
 
     fill_in 'Peso', with: ''
-    fill_in 'Data de retirada', with: '01/09/2019'
+    fill_in 'Data retirada inicio', with: '01/09/2019'
     fill_in 'Limite de retirada', with: '02/09/2019'
     fill_in 'Endereço', with: ''
-    click_on 'Enviar'
+    click_on 'Registra coleta'
 
     expect(page).to have_content 'Você deve preencher todos os campos'
   end

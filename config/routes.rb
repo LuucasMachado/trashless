@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :removal_orders
   resources :garbage_mens
   root to: "home#index"
+  namespace :cooperatives do
+    resources :removal_orders , only: %i[index]
+  end  
 end

@@ -16,7 +16,10 @@
             <% end %>
             <% if cooperative_signed_in? %>
             <li class="nav-item">
-                <%= link_to 'Registrar coletador', new_garbage_men_path, class: 'nav-link' %>
+              <%= link_to 'Registrar coletador', new_garbage_men_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Pedidos de retirada em aberto', cooperatives_removal_orders_path  %>
             </li>
             <% end %>
             <%# <li class="nav-item">

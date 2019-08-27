@@ -1,5 +1,5 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_parms, only: [:show, :update, :destroy]
   def index
     @removal_orders = current_user.removal_orders.open
@@ -40,6 +40,11 @@ class RemovalOrdersController < ApplicationController
 
     flash[:notice] = 'Pedido apagado com sucesso!'
     redirect_to removal_orders_path
+  end
+
+  def accept
+    @removal_order = RemovalOrder.find(params[:id])
+    redirect_to @removal_order
   end
 
   private

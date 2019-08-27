@@ -6,6 +6,12 @@
     <li>Endereço <%= @removal_order.address %></li>
   </ul>
 
-    <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
-    <%= link_to 'Apagar pedido', @removal_order, method: :delete,
+<%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
+  <%= label_tag :garbage_man, 'Coletor'%>
+  <%= select_tag :garbage_man, options_for_select(GarbageMan.all.collect {|gm| [gm.name, gm.id] }) %>
+  <%= button_tag 'aceitar', type: :submit %>
+<% end %>
+
+<%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
+<%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>

@@ -1,9 +1,6 @@
 class GarbageMenController < ApplicationController
   before_action :authenticate_cooperative!
   
-  def index
-  end
-  
   def new
     @garbageman = GarbageMan.new
   end

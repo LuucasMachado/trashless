@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 feature 'Cooperative accepts a removal order' do
   scenario 'successfully' do
     coop = create(:cooperative)
@@ -6,7 +7,7 @@ feature 'Cooperative accepts a removal order' do
     garbage_man = create(:garbage_man, cooperative: coop)
     removal_order = create(:removal_order, user: user, status: :open)
     
-    sign_in(coop, :scope => :coop)
+    login_as(coop, :scope => :coop)
     visit "/removal_order/#{removal_order.id}"
     select garbage_man.name, from: 'Coletor'
     click_on 'aceitar'

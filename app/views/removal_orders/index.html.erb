@@ -9,8 +9,10 @@
       <li>Endereço: <%= removal_order.address %></li>
       <li>Endereço: <%= link_to 'Ver detalhes', removal_order_path(removal_order) %></li>
       <li>
-        <% if removal_order.status == 'open' %>
-          <%= link_to 'Confirmar retirada', close_removal_order_path(removal_order), method: :post %>
+        <% if removal_order.open? %>
+          <span class="removal-order-<%= removal_order.id %>" >
+            <%= link_to 'Confirmar retirada', close_removal_order_path(removal_order), method: :post %>
+          </span>
         <% end %>
       </li>
     </ul> 

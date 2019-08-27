@@ -20,7 +20,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'rb-readline'
   gem 'rspec-rails'
   gem 'simplecov', require: false

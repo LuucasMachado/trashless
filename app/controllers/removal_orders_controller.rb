@@ -44,18 +44,15 @@ class RemovalOrdersController < ApplicationController
 
   def accept
     @removal_order = RemovalOrder.find(params[:id])
-    @garbage_man = GarbageMan.find_by(id: params[:garbage_man])
-    @removal_order.garbage_man = @garbage_man
+    @removal_order.garbage_man = GarbageMan.find_by(id: params[:garbage_man])
     if @removal_order.save(context: :accept_removal_order)
       @removal_order.in_progress!
-      flash[:notice] = 'Pedido aceito' 
+      flash[:notice] = 'Pedido aceito'
       return redirect_to @removal_order
     else
-      flash[:error] = 'ha algo errado' 
+      flash[:error] = 'ha algo errado'
       render :show
     end
-    
-
   end
 
   private

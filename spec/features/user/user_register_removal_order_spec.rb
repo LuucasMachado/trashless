@@ -22,7 +22,7 @@ feature 'User register removal order' do
     expect(page).to have_content 'Endereço Rua Ruan Juan Jackson'
   end
   scenario 'and must fill in all fields' do
-    user = create(:user, email: 'lucas@hotmail.com')
+    user = create(:user, email: 'lucas@hotmail.com', password: '123321')
 
     visit root_path
     click_on 'Logar como Usuario'
@@ -37,5 +37,9 @@ feature 'User register removal order' do
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Não foi possível salvar o pedido de remoçāo'
+    expect(page).to have_content 'Peso não pode ficar em branco'
+    expect(page).to have_content 'Data retirada inicio não pode ficar em branco'
+    expect(page).to have_content 'Data retirada inicio não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
   end
 end

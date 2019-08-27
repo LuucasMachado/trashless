@@ -5,7 +5,14 @@ Rails.application.routes.draw do
     member do
       post 'close'
     end
+    collection do
+      get 'finished'
+    end  
   end
+
   resources :garbage_mens
   root to: "home#index"
+  namespace :cooperatives do
+    resources :removal_orders , only: %i[index]
+  end
 end

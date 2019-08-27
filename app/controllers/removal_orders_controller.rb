@@ -5,6 +5,10 @@ class RemovalOrdersController < ApplicationController
     @removal_orders = current_user.removal_orders.open
   end
 
+  def finished
+    @removal_orders = current_user.removal_orders.close
+  end
+
   def new
     @removal_order = RemovalOrder.new
   end

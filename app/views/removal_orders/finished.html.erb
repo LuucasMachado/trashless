@@ -1,7 +1,7 @@
 <h1>'Pedidos encerrados'</h1>
 
 <h3>Total de pedidos encerrados: <%= @removal_orders.count %> </h3>
-<h3>Total de lixo retirado: <%=  %>  </h3>
+<h3>Total de lixo retirado: <%= current_user.total_collected %>  </h3>
 
 <% @removal_orders.each do |removal_order|  %>
    <ul class="list-group">

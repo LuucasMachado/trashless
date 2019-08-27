@@ -20,9 +20,9 @@ feature 'User view all orders open' do
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
-    click_on 'Meus pedidos encarrados'
+    click_on 'Meus pedidos encerrados'
 
-    # expect(page).to have_content 'Total de lixo retirado: 10'
+    expect(page).to have_content 'Total de lixo retirado: 10'
     expect(page).to have_content 'Pedidos encerrados'
     expect(page).to have_content 'Total de pedidos encerrados: 1'
     expect(page).to have_content 'Data de retirada: 01/09/2000'
@@ -32,7 +32,7 @@ feature 'User view all orders open' do
     expect(page).not_to have_content 'Endereço: rua das bolinhas n 88'
   end
 
-  scenario 'successufully' do
+  scenario 'view only user removals closed' do
     joao = User.create(email: 'jo@gmail.com', password: '12345678')
     maria = User.create(email: 'maria@gmail.com', password: '8765432')
 
@@ -53,11 +53,11 @@ feature 'User view all orders open' do
     fill_in 'Email', with: joao.email
     fill_in 'Senha', with: joao.password
     click_on 'Logar'
-    click_on 'Meus pedidos encarrados'
+    click_on 'Meus pedidos encerrados'
 
     expect(page).to have_content 'Pedidos encerrados'
     expect(page).to have_content 'Total de pedidos encerrados: 1'
-    # expect(page).to have_content 'Total de lixo retirado: 10'
+    expect(page).to have_content 'Total de lixo retirado: 10'
     expect(page).to have_content 'Data de retirada: 01/09/2000'
     expect(page).to have_content 'Endereço: rua das bolinhas n 02'
 

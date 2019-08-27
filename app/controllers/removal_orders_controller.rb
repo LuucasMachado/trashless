@@ -39,6 +39,16 @@ class RemovalOrdersController < ApplicationController
     end
   end
 
+  def close
+    @removal_order = RemovalOrder.find(params[:id])
+    if @removal_order.close!
+      redirect_to removal_orders_path
+      flash[:notice] = 'Pedido encerrado com sucesso!'
+    else 
+      flash[:notice] = 'Não foi possivel encerrado esse pedido'
+    end
+  end
+
   def destroy
     return unless @removal_order.destroy
 

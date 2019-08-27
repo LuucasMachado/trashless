@@ -10,7 +10,6 @@ feature 'Cooperative accepts a removal order' do
     visit removal_order_path(removal_order)
     select garbage_man.name, from: 'Coletor'
     click_on 'aceitar'
-    save_page
 
     expect(page).to have_content('status: em andamento')
     expect(page).to have_content('Pedido aceito')

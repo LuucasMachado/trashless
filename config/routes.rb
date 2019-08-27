@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   resources :removal_orders do
     member do
       post :accept
-      post 'close'
+      post :close
     end
     collection do
-      get 'finished'
+      get :finished
     end  
   end
   resources :garbage_men
   root to: "home#index"
   namespace :cooperatives do
-    resources :removal_orders , only: %i[index]
+    resources :removal_orders, only: %i[index]
   end
 end

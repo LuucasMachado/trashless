@@ -1,6 +1,6 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parms, only: [:show, :edit, :update, :destroy]
+  before_action :set_parms, only: [:show, :update, :destroy]
   def index
     @removal_orders = current_user.removal_orders.open
   end
@@ -10,10 +10,6 @@ class RemovalOrdersController < ApplicationController
   end
 
   def show
-    @removal_order = RemovalOrder.find(params[:id])
-  end
-
-  def edit
     @removal_order = RemovalOrder.find(params[:id])
   end
 

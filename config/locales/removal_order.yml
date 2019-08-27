@@ -1,0 +1,14 @@
+---
+pt-BR:
+  removal_order:
+    flash:
+      create: Remoção criada com sucesso
+  activerecord:
+    models:
+      removal_order: Ordem de remoção
+    attributes:
+      removal_order:
+        weight: Peso
+        removal_date_start: Data retirada inicio
+        removal_date_end: Limite de retirada
+        address: Endereço

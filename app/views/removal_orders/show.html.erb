@@ -6,6 +6,6 @@
     <li>Endereço <%= @removal_order.address %></li>
   </ul>
 
-    <%= link_to 'Editar', edit_removal_order_path %>
+    <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
     <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>

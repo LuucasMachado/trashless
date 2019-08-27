@@ -1,1 +1,6 @@
+<% if @removal_order.errors.any? %>
+  <% @removal_order.errors.full_messages.each do |error|%>
+    <%= error %>
+  <% end %>
+<% end%>
 <%= render 'form' %>

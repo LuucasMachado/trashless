@@ -22,7 +22,7 @@ feature 'Cooperative register collector' do
     fill_in 'Senha', with: user.password
     click_on 'Logar'
     click_on 'Pedidos de retirada em aberto'
-    
+
     expect(page).to have_content 'Endereço Solicitante: rua das bolinhas n 02'
     expect(page).to have_content 'Data de retirada: 08/09/2019'
     expect(page).to have_content 'Data limite de retirada: 02/10/2019'
@@ -32,10 +32,10 @@ feature 'Cooperative register collector' do
     expect(page).not_to have_content 'Data limite de retirada: 12/09/2019'
     expect(page).not_to have_content 'Peso: 15'
   end
-  
+
   scenario 'show link login as cooperative' do
-    visit cooperatives_removal_orders_path 
-    
-   expect(current_path).to eq new_cooperative_session_path
-  end  
+    visit cooperatives_removal_orders_path
+
+    expect(current_path).to eq new_cooperative_session_path
+  end
 end

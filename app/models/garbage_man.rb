@@ -1,4 +1,4 @@
-class GarbageMen < ApplicationRecord
+class GarbageMan < ApplicationRecord
   belongs_to :cooperative
   validates :name,
             :address,

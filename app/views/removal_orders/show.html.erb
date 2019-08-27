@@ -15,7 +15,7 @@
 <% else %>
   <h2>Codigo do pedido: <%= "##{@removal_order.id}-#{@removal_order.weight}"%></h2>
   <h3>status: <%= @removal_order.in_progress? ? 'em andamento' : @removal_order.status %> </h3>
-  <h3>coletor: <%#= @removal_order.garbage_man.name %> </h3>
+  <h3>coletor: <%= @removal_order.garbage_man.name %> </h3>
 <% end %>
 
 <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>

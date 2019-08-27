@@ -44,7 +44,11 @@ class RemovalOrdersController < ApplicationController
 
   def accept
     @removal_order = RemovalOrder.find(params[:id])
+    @garbage_man = GarbageMan.find(params[:garbage_man])
+    @removal_order.garbage_man = @garbage_man
+    @removal_order.save!
     @removal_order.in_progress!
+    
 
     flash[:notice] = 'Pedido aceito'
     redirect_to @removal_order

@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :removal_orders, dependent: :destroy
+
+  def total_collected
+    removal_orders.close.sum('weight')
+  end
 end

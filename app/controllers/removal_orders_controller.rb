@@ -44,7 +44,7 @@ class RemovalOrdersController < ApplicationController
     if @removal_order.close!
       redirect_to removal_orders_path
       flash[:notice] = 'Pedido encerrado com sucesso!'
-    else 
+    else
       flash[:notice] = 'Não foi possivel encerrado esse pedido'
     end
   end

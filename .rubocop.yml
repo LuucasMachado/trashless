@@ -28,7 +28,8 @@ AllCops:
 # desabilitamos a Cop de documentação com comentário
 Documentation:
  Enabled: false
-
+Style/ClassAndModuleChildren:
+ EnforcedStyle: compact
 # Esta é uma Cop polêmica, pois pode ajudar na performance. Isso se tornará
 # padrão no Ruby 3, mas deixamos a seu critério. Caso deseje manter esta Cop,
 # basta remover estas linhas

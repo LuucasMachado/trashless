@@ -25,14 +25,12 @@
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-   
+    <p class="error"><%= flash[:error] %></p>
    <% if user_signed_in? %>
      <p><%= link_to "Todos pedidos em aberto", removal_orders_path %></p>
    <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <p class="error"><%= flash[:error] %></p>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

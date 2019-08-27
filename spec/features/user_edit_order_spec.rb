@@ -15,17 +15,17 @@ feature 'User edit order'  do
     fill_in 'Senha', with: '12345678'
     click_on 'Logar'
     click_on 'Todos pedidos em aberto'
-    click_on 'Ver detalhes'
+    find("a[href='/removal_orders/#{removal_order.id}/edit']").click
     click_on 'Editar'
 
     fill_in 'Peso', with: '12'
-    fill_in 'Data de retirada', with: '02/09/2019'
+    fill_in 'Data retirada inicio', with: '02/09/2019'
     fill_in 'Limite de retirada', with: '03/09/2019'
     fill_in 'Endereço', with: 'rua das bananas n 02'
     click_on 'Enviar'
     expect(page).to have_content 'Pedido editado com sucesso!'
     expect(page).to have_content 'Peso: 12'
-    expect(page).to have_content 'Data de retirada: 02/09/2019'
+    expect(page).to have_content 'Data retirada inicio: 02/09/2019'
     expect(page).to have_content 'Limite de retirada: 03/09/2019'
     expect(page).to have_content 'Endereço: rua das bananas n 02'
   end
@@ -48,7 +48,7 @@ feature 'User edit order'  do
     click_on 'Editar'
 
     fill_in 'Peso', with: ''
-    fill_in 'Data de retirada', with: '01/09/2019'
+    fill_in 'Data retirada inicio inicio', with: '01/09/2019'
     fill_in 'Limite de retirada', with: '02/09/2019'
     fill_in 'Endereço', with: ''
     click_on 'Enviar'

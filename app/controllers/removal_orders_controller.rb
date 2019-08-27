@@ -11,8 +11,17 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.find(params[:id])
   end
 
+  def destroy
+    @removal_order = RemovalOrder.find(params[:id])
+    @removal_order.destroy
+    
+    notice = "Pedido apagado com sucesso!"
+    redirect_to removal_orders_path
+  end
+
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
+    @removal_order.user = current_user
     if @removal_order.save
       flash[:notice] = 'Pedido de remoção criado com sucesso'
       redirect_to @removal_order

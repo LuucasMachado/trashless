@@ -10,5 +10,5 @@ pt-BR:
       removal_order:
         weight: Peso
         removal_date_start: Data retirada inicio
-        removal_date_end: Data retirada fim
-        address: Endereço de retirada
+        removal_date_end: Limite de retirada
+        address: Endereço

@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   root to: "home#index"
   namespace :cooperatives do
     resources :removal_orders , only: %i[index]
-  end  
+  end
+  namespace :finished do
+    resources :removal_orders , only: %i[index]
+  end
 end

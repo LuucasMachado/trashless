@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe GarbageMen, type: :model do
+RSpec.describe GarbageMan, type: :model do
 end

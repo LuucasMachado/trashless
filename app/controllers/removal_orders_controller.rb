@@ -1,5 +1,6 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :new,
+                                            :finished, :create, :update]
   before_action :set_parms, only: [:show, :update, :destroy]
   def index
     @removal_orders = current_user.removal_orders.open
@@ -54,6 +55,19 @@ class RemovalOrdersController < ApplicationController
 
     flash[:notice] = 'Pedido apagado com sucesso!'
     redirect_to removal_orders_path
+  end
+
+  def accept
+    @removal_order = RemovalOrder.find(params[:id])
+    @removal_order.garbage_man = GarbageMan.find_by(id: params[:garbage_man])
+    if @removal_order.save(context: :accept_removal_order)
+      @removal_order.in_progress!
+      flash[:notice] = 'Pedido aceito'
+      return redirect_to @removal_order
+    else
+      flash[:error] = 'ha algo errado'
+      render :show
+    end
   end
 
   private

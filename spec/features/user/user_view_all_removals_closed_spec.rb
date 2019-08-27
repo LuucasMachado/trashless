@@ -22,13 +22,12 @@ feature 'User view all orders open' do
     click_on 'Logar'
     click_on 'Meus pedidos encarrados'
 
+    # expect(page).to have_content 'Total de lixo retirado: 10'
     expect(page).to have_content 'Pedidos encerrados'
     expect(page).to have_content 'Total de pedidos encerrados: 1'
-    # expect(page).to have_content 'Total de lixo retirado: 10'
     expect(page).to have_content 'Data de retirada: 01/09/2000'
     expect(page).to have_content 'Endereço: rua das bolinhas n 02'
 
-    expect(page).not_to have_content 'Total de lixo retirado: 29'
     expect(page).not_to have_content 'Data de retirada: 06/09/2000'
     expect(page).not_to have_content 'Endereço: rua das bolinhas n 88'
   end
@@ -58,7 +57,7 @@ feature 'User view all orders open' do
 
     expect(page).to have_content 'Pedidos encerrados'
     expect(page).to have_content 'Total de pedidos encerrados: 1'
-    #expect(page).to have_content 'Total de lixo retirado: 10'
+    # expect(page).to have_content 'Total de lixo retirado: 10'
     expect(page).to have_content 'Data de retirada: 01/09/2000'
     expect(page).to have_content 'Endereço: rua das bolinhas n 02'
 

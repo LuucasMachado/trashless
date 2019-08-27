@@ -9,7 +9,7 @@ feature 'Cooperative accepts a removal order' do
     
     login_as(coop, :scope => :coop)
     visit "/removal_orders/#{removal_order.id}"
-    save_page
+    # save_page
     select garbage_man.name, from: 'Coletor'
     click_on 'aceitar'
 
@@ -17,5 +17,10 @@ feature 'Cooperative accepts a removal order' do
     expect(page).to have_content('Pedido aceito')
     expect(page).to have_content("##{removal_order.id}-#{removal_order.weight}")
     expect(page).to have_content("coletor: #{garbage_man.name}")
+  end
+
+  scenario 'not allowed without colector' do
+    # expect(page).to have_content('status: aberto')
+    # expect(page).to have_content('Necessário indicar um coletor')
   end
 end

@@ -45,7 +45,8 @@ class RemovalOrdersController < ApplicationController
   def accept
     @removal_order = RemovalOrder.find(params[:id])
     @removal_order.in_progress!
-    
+
+    flash[:notice] = 'Pedido aceito'
     redirect_to @removal_order
   end
 

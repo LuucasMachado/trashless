@@ -5,6 +5,7 @@ feature 'User register removal order' do
     user = create(:user, email: 'lucas@hotmail.com')
 
     visit root_path
+    click_on 'Logar como Usuario'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
@@ -15,22 +16,23 @@ feature 'User register removal order' do
     fill_in 'Endereço', with: 'Rua Ruan Juan Jackson'
     click_on 'Registra coleta'
 
-    expect(page).to have_content 'Peso: 244.0 kg'
-    expect(page).to have_content 'Data retirada inicio: 14/06/2019'
-    expect(page).to have_content 'Limite de retirada: 14/07/2019'
-    expect(page).to have_content 'Endereço: Rua Ruan Juan Jackson'
+    expect(page).to have_content 'Peso 244.0 kg'
+    expect(page).to have_content 'Data retirada inicio 14/06/2019'
+    expect(page).to have_content 'Data retirada fim 14/07/2019'
+    expect(page).to have_content 'Endereço Rua Ruan Juan Jackson'
   end
   scenario 'and must fill in all fields' do
     user = create(:user, email: 'lucas@hotmail.com', password: '123321')
 
     visit root_path
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: '123321'
+    click_on 'Logar como Usuario'
+    fill_in 'Email', with: 'lucas@hotmail.com'
+    fill_in 'Senha', with: user.password
     click_on 'Logar'
     click_on 'Registrar coleta'
     fill_in 'Peso', with: ''
-    fill_in 'Data retirada inicio',  with: ''
-    fill_in 'Limite de retirada',  with: ''
+    fill_in 'Data retirada inicio', with: ''
+    fill_in 'Limite de retirada', with: ''
     fill_in 'Endereço', with: ''
     click_on 'Registra coleta'
 

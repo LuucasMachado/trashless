@@ -11,6 +11,7 @@ feature 'user cancel order' do
                         user: user, status: :open)
 
     visit root_path
+    click_on 'Logar como Usuario'
     fill_in 'Email', with: 'jo@gmail.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Logar'

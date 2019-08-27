@@ -1,4 +1,6 @@
 class RemovalOrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_parms, only: [:show, :edit, :update, :destroy]
   def index
     @removal_orders = current_user.removal_orders.open
   end
@@ -9,14 +11,6 @@ class RemovalOrdersController < ApplicationController
 
   def show
     @removal_order = RemovalOrder.find(params[:id])
-  end
-
-  def destroy
-    @removal_order = RemovalOrder.find(params[:id])
-    @removal_order.destroy
-    
-    notice = "Pedido apagado com sucesso!"
-    redirect_to removal_orders_path
   end
 
   def create
@@ -30,23 +24,29 @@ class RemovalOrdersController < ApplicationController
       render :new
     end
   end
-  
-  def edit
-    @removal_order = RemovalOrder.find(params[:id])
-  end
 
   def update
-    @removal_order = RemovalOrder.find(params[:id])
     if @removal_order.update(removal_order_params)
-      flash[:notice] = 'Pedido editado com sucesso!'
       redirect_to @removal_order
+      flash[:notice] = 'Pedido editado com sucesso!'
     else
-      flash[:error] = 'Você deve preencher todos os campos'
+      flash[:notice] = 'Você deve preencher todos os campos'
       render :edit
     end
   end
 
+  def destroy
+    return unless @removal_order.destroy
+
+    flash[:notice] = 'Pedido apagado com sucesso!'
+    redirect_to removal_orders_path
+  end
+
   private
+
+  def set_parms
+    @removal_order = RemovalOrder.find(params[:id])
+  end
 
   def removal_order_params
     params.require(:removal_order).permit(:weight, :removal_date_start,

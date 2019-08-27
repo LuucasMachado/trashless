@@ -10,27 +10,9 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <a class="navbar-brand" href="#">Trashless</a>
-      <% if user_signed_in? %>
-        <%= link_to 'Registrar coleta', new_removal_order_path, class: 'navbar-brand' %>
-      <% end %>
-      <li>
-        <% if user_signed_in? %>
-          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Log in', new_user_session_path %>
-        <% end %>
-      </li>
-    </nav>
+    <%= render "shared/nav" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <p class="error"><%= flash[:error] %></p>
-   <% if user_signed_in? %>
-     <p><%= link_to "Todos pedidos em aberto", removal_orders_path %></p>
-   <% end %>
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

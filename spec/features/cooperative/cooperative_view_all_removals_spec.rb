@@ -38,4 +38,17 @@ feature 'Cooperative register collector' do
 
     expect(current_path).to eq new_cooperative_session_path
   end
+
+  scenario 'has not removals' do
+    user = create(:cooperative)
+
+    visit root_path
+    click_on 'Logar como Filial'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Logar'
+    click_on 'Pedidos de retirada em aberto'
+
+    expect(page).to have_content 'Nenhum pedido em aberto'
+  end
 end

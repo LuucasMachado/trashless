@@ -4,5 +4,5 @@ class RemovalOrder < ApplicationRecord
   validates :weight, :removal_date_start, :removal_date_end,
             :address, presence: true
 
-  has_many :removal_order_problems
+  has_many :removal_order_problems, dependent: :destroy
 end

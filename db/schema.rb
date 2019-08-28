@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_234411) do
     t.integer "status", default: 0
     t.integer "user_id"
     t.string "description"
+    t.integer "garbage_man_id"
+    t.index ["garbage_man_id"], name: "index_removal_orders_on_garbage_man_id"
     t.index ["user_id"], name: "index_removal_orders_on_user_id"
   end
 

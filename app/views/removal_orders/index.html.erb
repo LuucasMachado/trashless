@@ -2,5 +2,30 @@
 
 <h1>Pedidos em aberto</h1>
 
-<%= render @removal_orders %>
+<% if @removal_orders.any? %>
+  <% @removal_orders.each do |removal_order|  %>
 
+    <ul>
+      <li><%= removal_order.order_title %></li>
+      <li>Peso: <%= removal_order.weight %></li>
+      <li>Data de retirada: <%= l removal_order.removal_date_start, format: :custom %></li>
+      <li>Limite de retirada: <%= l removal_order.removal_date_end, format: :custom  %></li>
+      <li>Endereço: <%= removal_order.address %></li>
+      <li>Endereço: <%= link_to 'Ver detalhes', removal_order_path(removal_order) %></li>
+        <% if removal_order.open? %>
+          <li>
+            <span class="removal-order-<%= removal_order.id %>" >
+              <%= link_to 'Confirmar retirada', close_removal_order_path(removal_order), method: :post %>
+            </span>
+          </li>
+        <% end %>
+      <li>
+        status: <%= t removal_order.status, 
+                        scope: [:activerecord, :attributes, 
+                                :removal_order, :status] %>
+      </li>
+    </ul> 
+  <% end %>
+<% else %>
+  <p>Nenhuma coleta disponivel</p>
+<% end %>

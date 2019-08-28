@@ -1,8 +1,18 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_parms, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only: [:new,
+                                            :finished, :create, :update]
+  before_action :set_parms, only: [:show, :update, :destroy, :accept]
   def index
-    @removal_orders = current_user.removal_orders.open
+    if params[:status].nil?
+      @removal_orders = RemovalOrder.all
+      @removal_orders = current_user.removal_orders.open if user_signed_in?
+    else
+      @removal_orders = RemovalOrder.where(status: params[:status])
+    end
+  end
+
+  def finished
+    @removal_orders = current_user.removal_orders.close
   end
 
   def new
@@ -37,11 +47,36 @@ class RemovalOrdersController < ApplicationController
     end
   end
 
+  def close
+    @removal_order = RemovalOrder.find(params[:id])
+    if @removal_order.close!
+      redirect_to removal_orders_path
+      flash[:notice] = 'Pedido encerrado com sucesso!'
+    else
+      flash[:notice] = 'Não foi possivel encerrado esse pedido'
+    end
+  end
+
   def destroy
     return unless @removal_order.destroy
 
     flash[:notice] = 'Pedido apagado com sucesso!'
     redirect_to removal_orders_path
+  end
+
+  def accept
+    @removal_order.garbage_man = GarbageMan.find_by(id: params[:garbage_man])
+
+    if @removal_order.save(context: :accept_removal_order)
+      @removal_order.in_progress!
+      flash[:notice] = 'Pedido aceito'
+      return redirect_to @removal_order
+    end
+
+    flash[:error] = 'ha algo errado'
+    @removal_order_problems = @removal_order.removal_order_problems
+    @removal_order_problem = RemovalOrderProblem.new
+    render :show
   end
 
   private
@@ -52,6 +87,9 @@ class RemovalOrdersController < ApplicationController
 
   def removal_order_params
     params.require(:removal_order).permit(:weight, :removal_date_start,
-                                          :removal_date_end, :address)
+                                          :removal_date_end,
+                                          :address,
+                                          :description,
+                                          :photo)
   end
 end

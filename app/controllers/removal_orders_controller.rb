@@ -1,9 +1,10 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new,
+  before_action :authenticate_user!, only: [:new,
                                             :finished, :create, :update]
   before_action :set_parms, only: [:show, :update, :destroy]
   def index
-    @removal_orders = current_user.removal_orders.open
+    @removal_orders = current_user.removal_orders.open if user_signed_in?
+    # @removal_orders = RemovalOrder.all
   end
 
   def finished

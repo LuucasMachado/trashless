@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_154539) do
+ActiveRecord::Schema.define(version: 2019_08_27_235522) do
 
   create_table "cooperatives", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_154539) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.integer "user_id"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.index ["user_id"], name: "index_removal_orders_on_user_id"
   end
 

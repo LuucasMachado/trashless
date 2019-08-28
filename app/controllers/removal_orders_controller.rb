@@ -1,6 +1,6 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_parms, only: [:show, :update, :destroy]
+  before_action :set_params, only: [:show, :update, :destroy, :edit, :close]
   def index
     @removal_orders = current_user.removal_orders.open
   end
@@ -13,9 +13,7 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.new
   end
 
-  def show
-    @removal_order = RemovalOrder.find(params[:id])
-  end
+  def show; end
 
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
@@ -29,6 +27,8 @@ class RemovalOrdersController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
     if @removal_order.update(removal_order_params)
       redirect_to @removal_order
@@ -40,7 +40,6 @@ class RemovalOrdersController < ApplicationController
   end
 
   def close
-    @removal_order = RemovalOrder.find(params[:id])
     if @removal_order.close!
       redirect_to removal_orders_path
       flash[:notice] = 'Pedido encerrado com sucesso!'
@@ -58,7 +57,7 @@ class RemovalOrdersController < ApplicationController
 
   private
 
-  def set_parms
+  def set_params
     @removal_order = RemovalOrder.find(params[:id])
   end
 

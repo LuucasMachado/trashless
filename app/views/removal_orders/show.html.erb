@@ -6,6 +6,20 @@
     <li>Endereço <%= @removal_order.address %></li>
   </ul>
 
+  <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -23.5506507, lng: -46.6333824},
+          zoom: 12
+        });
+        var marker = new google.maps.Marker({position: {lat: <%= @removal_order.latitude %>, lng: <%= @removal_order.latitude %>}, map: map});
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCAxZM2uJ40NAgj-L7zJbcA7aCaHYJq4k&callback=initMap"
+    async defer></script>
+
     <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
     <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>

@@ -12,3 +12,5 @@ pt-BR:
         removal_date_start: Data retirada inicio
         removal_date_end: Limite de retirada
         address: Endereço
+        description: 'Descrição'
+        photo: 'Foto'

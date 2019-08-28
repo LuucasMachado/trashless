@@ -14,12 +14,16 @@ feature 'User register removal order' do
     fill_in 'Data retirada inicio', with: '14/06/2019'
     fill_in 'Limite de retirada', with: '14/07/2019'
     fill_in 'Endereço', with: 'Rua Ruan Juan Jackson'
+    fill_in 'Descrição', with: 'sao 244kg de ferro 2x2'
+    attach_file 'Foto', Rails.root.join('spec', 'support', 'lixo.jpeg')
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Peso 244.0 kg'
     expect(page).to have_content 'Data retirada inicio 14/06/2019'
     expect(page).to have_content 'Data retirada fim 14/07/2019'
     expect(page).to have_content 'Endereço Rua Ruan Juan Jackson'
+    expect(page).to have_content 'Descrição sao 244kg de ferro 2x2'
+    expect(page).to have_css('img[src*="lixo.jpeg"]')
   end
   scenario 'and must fill in all fields' do
     user = create(:user, email: 'lucas@hotmail.com', password: '123321')
@@ -34,6 +38,7 @@ feature 'User register removal order' do
     fill_in 'Data retirada inicio', with: ''
     fill_in 'Limite de retirada', with: ''
     fill_in 'Endereço', with: ''
+    fill_in 'Descrição', with: ''
     click_on 'Registra coleta'
 
     expect(page).to have_content 'Não foi possível salvar o pedido de remoçāo'

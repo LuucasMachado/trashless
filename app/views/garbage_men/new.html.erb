@@ -1,15 +1,19 @@
 <%= form_for @garbageman, url: garbage_men_path do |f| %>
+<div class="form-group">
   <%= f.label :name, 'Nome:' %>
-  <%= f.text_field :name %>
-
+  <%= f.text_field :name, class:'form-control' %>
+</div>
+<div class="form-group">
   <%= f.label :address, 'Endereço:'  %>
-  <%= f.text_field :address %>
-
+  <%= f.text_field :address, class:'form-control' %>
+</div>
+<div class="form-group">
   <%= f.label :contact, 'Contato:' %>
-  <%= f.text_field :contact %>
-
+  <%= f.text_field :contact, class:'form-control' %>
+</div>
+<div class="form-group">
   <%= f.label :withdrawal, 'Meio de retirada:' %>
-  <%= f.text_field :withdrawal %>
-
+  <%= f.text_field :withdrawal, class:'form-control' %>
+</div>
   <%= f.submit 'Registra coletador' %>
 <% end %>

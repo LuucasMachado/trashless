@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 
 module Trashless
   class Application < Rails::Application
+    config.google_maps = config_for(:google_maps)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 

@@ -1,6 +1,7 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_params, only: [:show, :update, :destroy, :edit, :close]
+  
   def index
     @removal_orders = current_user.removal_orders.open
   end

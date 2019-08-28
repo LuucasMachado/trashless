@@ -4,7 +4,8 @@ class RemovalOrdersController < ApplicationController
   before_action :set_parms, only: [:show, :update, :destroy]
   def index
     if params[:status].nil?
-      @removal_orders = current_user.removal_orders.open
+      @removal_orders = RemovalOrder.all
+      @removal_orders = current_user.removal_orders.open if user_signed_in?
     else
       @removal_orders = RemovalOrder.where(status: params[:status])
     end

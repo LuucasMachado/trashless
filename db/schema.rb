@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_234411) do
+ActiveRecord::Schema.define(version: 2019_08_28_172458) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,17 +31,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_234411) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "collectors", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "contact"
-    t.string "withdrawal"
-    t.integer "cooperative_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cooperative_id"], name: "index_collectors_on_cooperative_id"
   end
 
   create_table "cooperatives", force: :cascade do |t|
@@ -76,8 +65,10 @@ ActiveRecord::Schema.define(version: 2019_08_27_234411) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.integer "user_id"
-    t.string "description"
     t.integer "garbage_man_id"
+    t.string "description"
+    t.decimal "lat"
+    t.decimal "lng"
     t.index ["garbage_man_id"], name: "index_removal_orders_on_garbage_man_id"
     t.index ["user_id"], name: "index_removal_orders_on_user_id"
   end

@@ -4,6 +4,7 @@ FactoryBot.define do
     removal_date_start { '2019-08-21 20:46:52' }
     removal_date_end { '2019-08-21 20:46:52' }
     address { 'MyString' }
+    description { 'Saco de lixo com muito ferro' }
     user
   end
 end

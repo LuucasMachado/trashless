@@ -25,6 +25,8 @@
         <% end %>
       </div>
       <%= yield %>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.configuration.google_maps['key_api']%>&callback=initMap"
+    async defer></script>
     </div>
   </body>
 </html>

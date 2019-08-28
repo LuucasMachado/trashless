@@ -1,0 +1,6 @@
+production:
+  environment: production
+  key_api: AIzaSyCQ1G6Alf_odgIOusTeP1wnKsoNdoSUcJ0
+development:
+  environment: sandbox
+  key_api: AIzaSyCQ1G6Alf_odgIOusTeP1wnKsoNdoSUcJ0

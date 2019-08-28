@@ -25,7 +25,7 @@ class RemovalOrdersController < ApplicationController
       flash[:notice] = 'Pedido de remoção criado com sucesso'
       redirect_to @removal_order
     else
-      flash[:notice] = 'Não foi possível salvar o pedido de remoçāo'
+      flash[:alert] = 'Não foi possível salvar o pedido de remoçāo'
       render :new
     end
   end
@@ -35,7 +35,7 @@ class RemovalOrdersController < ApplicationController
       redirect_to @removal_order
       flash[:notice] = 'Pedido editado com sucesso!'
     else
-      flash[:notice] = 'Você deve preencher todos os campos'
+      flash[:alert] = 'Você deve preencher todos os campos'
       render :edit
     end
   end
@@ -46,7 +46,7 @@ class RemovalOrdersController < ApplicationController
       redirect_to removal_orders_path
       flash[:notice] = 'Pedido encerrado com sucesso!'
     else
-      flash[:notice] = 'Não foi possivel encerrado esse pedido'
+      flash[:alert] = 'Não foi possivel encerrado esse pedido'
     end
   end
 
@@ -65,7 +65,7 @@ class RemovalOrdersController < ApplicationController
       flash[:notice] = 'Pedido aceito'
       return redirect_to @removal_order
     else
-      flash[:error] = 'ha algo errado'
+      flash[:alert] = 'ha algo errado'
       render :show
     end
   end

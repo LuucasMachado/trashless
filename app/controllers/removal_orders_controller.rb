@@ -78,6 +78,9 @@ class RemovalOrdersController < ApplicationController
 
   def removal_order_params
     params.require(:removal_order).permit(:weight, :removal_date_start,
-                                          :removal_date_end, :address)
+                                          :removal_date_end,
+                                          :address,
+                                          :description,
+                                          :photo)
   end
 end

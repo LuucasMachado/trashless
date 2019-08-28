@@ -8,12 +8,14 @@ feature 'User confirm withdrawal order' do
                                          removal_date_start: '01/09/2000',
                                          removal_date_end: '02/09/2000',
                                          address: 'rua das bolinhas n 02',
+                                         description: 'Material feito de ferro',
                                          user: user, status: :open)
 
     removal_order2 = RemovalOrder.create(weight: 19,
                                          removal_date_start: '06/09/2000',
                                          removal_date_end: '08/09/2000',
                                          address: 'rua das bolinhas n 88',
+                                         description: 'Material feito de ferro',
                                          user: user, status: :open)
 
     visit root_path

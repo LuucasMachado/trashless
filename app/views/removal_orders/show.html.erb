@@ -10,6 +10,8 @@
     <li>Data retirada inicio <%= l @removal_order.removal_date_start, format: :custom %></li>
     <li>Data retirada fim <%= l @removal_order.removal_date_end, format: :custom  %></li>
     <li>Endereço <%= @removal_order.address %></li>
+    <li>Descrição <%= @removal_order.description %></li>
+    <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
   </ul>
 
 <% if @removal_order.open? %>

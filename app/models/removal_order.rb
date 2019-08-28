@@ -1,12 +1,11 @@
 class RemovalOrder < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
-  validates :weight, :removal_date_start, :removal_date_end,
-            :address, presence: true
+  validates :weight, :removal_date_start, :removal_date_end, :address,
+            presence: true
 
   geocoded_by :address
-  after_validation :geocode
-            :description, :address, presence: true
+  after_validation :geocode, :description, :address, presence: true
   belongs_to :garbage_man, optional: true
   enum status: { open: 0, in_progress: 1, in_problem: 2, close: 5 }
 

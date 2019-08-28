@@ -20,8 +20,9 @@ RSpec.describe RemovalOrder, type: :model do
       create(:garbage_man, cooperative: coop)
       removal_order = create(:removal_order, user: user, status: :open)
 
-      expect(removal_order.order_title).to eql
-      "#{removal_order.id}-#{removal_order.weight}"
+      expect(removal_order.order_title).to eql(
+        "##{removal_order.id}-#{removal_order.weight}"
+      )
     end
   end
 end

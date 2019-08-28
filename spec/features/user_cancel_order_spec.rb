@@ -8,6 +8,7 @@ feature 'user cancel order' do
                                         removal_date_start: '01/09/2019',
                                         removal_date_end: '02/09/2019',
                                         address: 'rua das bolinhas n 02',
+                                        description: 'Material feito de ferro',
                                         user: user, status: :open)
 
     visit root_path

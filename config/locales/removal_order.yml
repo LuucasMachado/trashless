@@ -8,7 +8,13 @@ pt-BR:
       removal_order: Ordem de remoção
     attributes:
       removal_order:
+        status:
+          open: 'aberto'
+          in_problem: 'com problema'
+          in_progress: 'em andamento'
         weight: Peso
         removal_date_start: Data retirada inicio
         removal_date_end: Limite de retirada
         address: Endereço
+        description: 'Descrição'
+        photo: 'Foto'

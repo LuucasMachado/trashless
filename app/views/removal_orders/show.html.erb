@@ -1,9 +1,17 @@
+<% if @removal_order.errors.any? %>
+  <% @removal_order.errors.full_messages.each do |message|%>
+    <%= message %>
+  <% end %>  
+<% end %>
+
 <h1>Detalhes do pedido</h1>
   <ul>
     <li>Peso <%= @removal_order.weight %> kg</li>
     <li>Data retirada inicio <%= l @removal_order.removal_date_start, format: :custom %></li>
     <li>Data retirada fim <%= l @removal_order.removal_date_end, format: :custom  %></li>
     <li>Endereço <%= @removal_order.address %></li>
+    <li>Descrição <%= @removal_order.description %></li>
+    <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
   </ul>
 
   <div id="map"></div>
@@ -18,7 +26,22 @@
       }
     </script>
 
-    <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
-    <%= link_to 'Apagar pedido', @removal_order, method: :delete,
+<% if @removal_order.open? %>
+  <% if cooperative_signed_in? %>
+    <%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
+      <%= label_tag :garbage_man, 'Coletor'%>
+      <%= select_tag :garbage_man, options_for_select(GarbageMan.all.collect {|gm| [gm.name, gm.id] }), prompt: 'Selecione um coletor' %>
+      <%= button_tag 'aceitar', type: :submit %>
+    <% end %>
+  <% end %>
+  <h3>status: <%= @removal_order.in_progress? ? 'em andamento' : 'aberto' %> </h3>
+<% else %>
+  <h2>Codigo do pedido: <%= "##{@removal_order.id}-#{@removal_order.weight}"%></h2>
+  <h3>status: <%= @removal_order.in_progress? ? 'em andamento' : @removal_order.status %> </h3>
+  <h3>coletor: <%= @removal_order.garbage_man.name %> </h3>
+<% end %>
+
+<%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
+<%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>
     <%= link_to 'Voltar', removal_orders_path %>

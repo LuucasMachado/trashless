@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      garbage_man: coletador
+    attributes:
+      garbage_man:
+        name: Nome
+        address: Endereço
+        contact: Contato
+        withdrawal: Meio de retirada

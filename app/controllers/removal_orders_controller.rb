@@ -11,6 +11,8 @@ class RemovalOrdersController < ApplicationController
 
   def show
     @removal_order = RemovalOrder.find(params[:id])
+    @removal_order_problems = @removal_order.removal_order_problems
+    @removal_order_problem = RemovalOrderProblem.new
   end
 
   def create

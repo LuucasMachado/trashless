@@ -1,0 +1,8 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      removal_order_problem: Problema
+    attributes:
+      removal_order_problem:
+        comment: Informações

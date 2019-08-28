@@ -6,3 +6,6 @@ pt-BR:
     attributes:
       removal_order_problem:
         comment: Informações
+  removal_order_problem:
+    error:
+      message: 'Preencha todas as informações'

@@ -46,6 +46,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   Capybara.default_max_wait_time = 15
+  Capybara.server = :puma, { Silent: true  }
 
   Capybara.register_driver :headless_chrome do |app|
     Capybara::Selenium::Driver.load_selenium

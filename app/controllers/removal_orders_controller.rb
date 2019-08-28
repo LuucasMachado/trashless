@@ -1,7 +1,6 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_params, only: [:show, :update, :destroy, :edit, :close]
-  
   before_action :authenticate_user!, only: [:new, :finished, :create, :update]
 
   def index

@@ -6,7 +6,6 @@ feature 'Cooperative view orders in Map' do
     lucas = create(:user, email: 'lucar@trahsless.com')
     10.times do
       create(:removal_order, user: lucas, status: :open)
-      # create(:removal_order, user: maria, status: :in_problem)
     end
 
     login_as(coop, scope: :cooperative)

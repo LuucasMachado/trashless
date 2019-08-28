@@ -15,7 +15,7 @@ class GarbageMenController < ApplicationController
       flash[:notice] = 'Coletador criado com sucesso'
       redirect_to garbage_man_path(@garbageman)
     else
-      flash[:notice] = 'Não foi possível criar o coletador'
+      flash[:alert] = 'Não foi possível criar o coletador'
       render :new
     end
   end

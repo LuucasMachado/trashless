@@ -15,10 +15,12 @@
 </ul>
 
 <% if @removal_order.open? %>
-  <%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
-    <%= label_tag :garbage_man, 'Coletor'%>
-    <%= select_tag :garbage_man, options_for_select(GarbageMan.all.collect {|gm| [gm.name, gm.id] }), prompt: 'Selecione um coletor' %>
-    <%= button_tag 'aceitar', type: :submit %>
+  <% if cooperative_signed_in? %>
+    <%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
+      <%= label_tag :garbage_man, 'Coletor'%>
+      <%= select_tag :garbage_man, options_for_select(GarbageMan.all.collect {|gm| [gm.name, gm.id] }), prompt: 'Selecione um coletor' %>
+      <%= button_tag 'aceitar', type: :submit %>
+    <% end %>
   <% end %>
   <h3>status: <%= @removal_order.in_progress? ? 'em andamento' : 'aberto' %> </h3>
 <% else %>

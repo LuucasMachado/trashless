@@ -6,7 +6,7 @@ feature 'Cooperative accepts a removal order' do
     user = create(:user)
     garbage_man = create(:garbage_man, cooperative: coop)
     removal_order = create(:removal_order, user: user, status: :open)
-    login_as(coop, scope: :coop)
+    login_as(coop, scope: :cooperative)
     visit removal_order_path(removal_order)
     select garbage_man.name, from: 'Coletor'
     click_on 'aceitar'
@@ -23,7 +23,7 @@ feature 'Cooperative accepts a removal order' do
     removal_order = create(:removal_order, user: user, status: :open)
     create(:garbage_man, cooperative: coop)
 
-    login_as(coop, scope: :coop)
+    login_as(coop, scope: :cooperative)
     visit removal_order_path(removal_order)
     find("option[value='']").click
     click_on 'aceitar'

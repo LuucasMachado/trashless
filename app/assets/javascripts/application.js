@@ -19,3 +19,6 @@
 //= require_tree .
 
 
+$("[type='datetime']").datepicker()
+
+

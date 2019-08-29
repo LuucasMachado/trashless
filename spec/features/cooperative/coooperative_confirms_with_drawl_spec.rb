@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'Cooperative confirm withdrawal order' do
   scenario 'successfully' do
     user = User.create(email: 'jo@gmail.com', password: '12345678')
+    coop = create(:cooperative)
+    garbage_man = create(:garbage_man, cooperative: coop)
     cooperative = Cooperative.create(email: 'jo@gmail.com',
                                      password: '12345678',
                                      address: 'rua das figueiras')
@@ -12,6 +14,7 @@ feature 'Cooperative confirm withdrawal order' do
                                          removal_date_end: '02/09/2000',
                                          address: 'rua das figueiras',
                                          description: 'Material feito de ferro',
+                                         garbage_man: garbage_man,
                                          user: user, status: :open)
 
     removal_order2 = RemovalOrder.create(weight: 19,
@@ -28,8 +31,9 @@ feature 'Cooperative confirm withdrawal order' do
     click_on 'Logar'
     click_on 'Pedidos de retirada em aberto'
     within ".removal-order-#{removal_order1.id}" do
-      click_on('Confirmar retirada')
+      click_on('Ver detalhes')
     end
+    click_on('Confirmar retirada')
 
     removal_order1.reload
     removal_order2.reload

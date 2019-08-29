@@ -62,9 +62,7 @@ class RemovalOrdersController < ApplicationController
 
   def close_coop
     if @removal_order.garbage_man_id.nil?
-      flash[:alert] = 'Não foi possivel encerrado esse pedido
-                       pois ele não possui um coletador'
-      redirect_to removal_orders_path
+      flash[:alert] = 'Não foi possivel encerrado esse pedido'
     else
       if @removal_order.close!
         flash[:notice] = 'Pedido encerrado com sucesso!'

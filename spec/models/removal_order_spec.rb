@@ -8,7 +8,6 @@ RSpec.describe RemovalOrder, type: :model do
                                  removal_date_end: '2019-08-10',
                                  address: 'Paris', user: josy)
       removal.save!
-
       expect(removal.latitude.to_f).to eq 48.8566101
       expect(removal.longitude.to_f).to eq 2.3514992
     end

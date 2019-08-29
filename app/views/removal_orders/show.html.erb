@@ -14,6 +14,18 @@
     <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
   </ul>
 
+  <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @removal_order.latitude %>, lng: <%= @removal_order.longitude %>},
+          zoom: 12
+        });
+        var marker = new google.maps.Marker({position: {lat: <%= @removal_order.latitude %>, lng: <%= @removal_order.longitude %>}, map: map});
+      }
+    </script>
+
 <% if @removal_order.open? %>
   <% if cooperative_signed_in? %>
     <%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
@@ -32,3 +44,4 @@
 <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
 <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>
+    <%= link_to 'Voltar', removal_orders_path %>

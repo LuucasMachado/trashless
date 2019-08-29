@@ -4,10 +4,11 @@ feature 'Cooperative register collector' do
   scenario 'successfully' do
     user = create(:cooperative)
     collector = GarbageMan.create(name: 'Stephen Curry do Brasil',
-                                  address: 'asas',
+                                  address: 'Rua napoleao de barros',
                                   contact: '111',
                                   withdrawal: 'asasas',
                                   cooperative: user)
+    allow(RemovalOrder).to receive(:near).and_return([])
     visit root_path
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email

@@ -12,8 +12,8 @@
     <% @removal_orders.each_with_index do |location, index| %>
       new google.maps.Marker({
         position: {
-          lat: <%= location.lat %>,
-          lng: <%= location.lng %>},
+          lat: <%= location.latitude %>,
+          lng: <%= location.longitude %>},
           map: map,
           zIndex: <%= index + 1 %>
           })

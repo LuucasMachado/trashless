@@ -1,7 +1,8 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new,
-                                            :finished, :create, :update]
-  before_action :set_parms, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_params, only: [:show, :update, :destroy, :edit, :close]
+  before_action :authenticate_user!, only: [:new, :finished, :create, :update]
+
   def index
     if params[:status].nil?
       @removal_orders = RemovalOrder.all
@@ -19,9 +20,7 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.new
   end
 
-  def show
-    @removal_order = RemovalOrder.find(params[:id])
-  end
+  def show; end
 
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
@@ -30,28 +29,29 @@ class RemovalOrdersController < ApplicationController
       flash[:notice] = 'Pedido de remoção criado com sucesso'
       redirect_to @removal_order
     else
-      flash[:notice] = 'Não foi possível salvar o pedido de remoçāo'
+      flash[:alert] = 'Não foi possível salvar o pedido de remoçāo'
       render :new
     end
   end
+
+  def edit; end
 
   def update
     if @removal_order.update(removal_order_params)
       redirect_to @removal_order
       flash[:notice] = 'Pedido editado com sucesso!'
     else
-      flash[:notice] = 'Você deve preencher todos os campos'
+      flash[:alert] = 'Você deve preencher todos os campos'
       render :edit
     end
   end
 
   def close
-    @removal_order = RemovalOrder.find(params[:id])
     if @removal_order.close!
       redirect_to removal_orders_path
       flash[:notice] = 'Pedido encerrado com sucesso!'
     else
-      flash[:notice] = 'Não foi possivel encerrado esse pedido'
+      flash[:alert] = 'Não foi possivel encerrado esse pedido'
     end
   end
 
@@ -70,14 +70,14 @@ class RemovalOrdersController < ApplicationController
       flash[:notice] = 'Pedido aceito'
       return redirect_to @removal_order
     else
-      flash[:error] = 'ha algo errado'
+      flash[:alert] = 'ha algo errado'
       render :show
     end
   end
 
   private
 
-  def set_parms
+  def set_params
     @removal_order = RemovalOrder.find(params[:id])
   end
 

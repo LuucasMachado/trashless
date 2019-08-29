@@ -6,6 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+coops = [
+  {
+    email: "bragamat@trashless.com",
+    password: "123321"
+  },
+  {
+    email: "matbragabyebug@trashless.com",
+    password: "123321"
+  },
+]
+
+users = [
+  {
+    email: "braa@trashless.com",
+    password: "123321"
+  },
+  {
+    email: "matt@trashless.com",
+    password: "123321"
+  },
+]
+
+users.each do |coop|
+  User.create!(email: coop[:email], password: coop[:password])
+end
+
 addresses = [
   'rua barra funda',
   'avenida paulista',
@@ -17,26 +43,11 @@ addresses = [
 ]
 
 addresses.each do |address|
-  RemovalOrder.create!(user: FactoryBot.create(:user), 
+  RemovalOrder.create!(user: User.first, 
                       address: address, 
                       weight: 10.0, 
                       removal_date_start: Date.today, 
                       removal_date_end: Date.today + 1,
                       description: "remover lixo em #{address}"
                       )
-end
-
-coops = [
-  {
-    email: "bragamat@trashless.com",
-    password: "123321"
-  },
-  {
-    email: "bragamat1@trashless.com",
-    password: "123321"
-  },
-]
-
-coops.each do |coop|
-  Cooperative.create!(email: coop[:email], password: coop[:password])
 end

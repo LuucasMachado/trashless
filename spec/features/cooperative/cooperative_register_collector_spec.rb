@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Cooperative register collector' do
   scenario 'successfully' do
-    user = create(:cooperative)
+    user = create(:cooperative, address: 'rua barra funda')
     visit root_path
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
@@ -22,7 +22,7 @@ feature 'Cooperative register collector' do
     expect(page).to have_content 'Meio de retirada: Carro manual'
   end
   scenario 'and must fill in all fields' do
-    user = create(:cooperative)
+    user = create(:cooperative, address: 'rua barra funda')
     visit root_path
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email

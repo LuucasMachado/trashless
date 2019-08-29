@@ -1,3 +1,9 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    return render :index unless cooperative_signed_in?
+
+    @cooperative = current_cooperative
+    @removal_orders = RemovalOrder.near(@cooperative)
+    render 'cooperatives/index'
+  end
 end

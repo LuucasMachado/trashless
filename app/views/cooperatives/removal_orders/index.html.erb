@@ -6,6 +6,13 @@
       <li>Data limite de retirada: <%= l removal_order.removal_date_end, format: :custom  %></li>
       <li>Endereço Solicitante: <%= removal_order.address %></li>
       <li>Peso: <%= removal_order.weight %></li>
+      <li>  
+        <% if removal_order.open? %>
+          <span class="removal-order-<%= removal_order.id %>" >
+            <%= link_to 'Ver detalhes', removal_order_path(removal_order) %>
+          </span>
+        <% end %>
+      </li>
     </ul>  
   <% end %>
 <% else %>

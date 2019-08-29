@@ -1,7 +1,13 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new,
-                                            :finished, :create, :update]
-  before_action :set_parms, only: [:show, :update, :destroy, :accept]
+  before_action :set_params, only: [:show,
+                                    :update,
+                                    :destroy,
+                                    :edit,
+                                    :close,
+                                    :close_coop,
+                                    :accept]
+  before_action :authenticate_user!, only: [:new, :finished, :create, :update]
+
   def index
     if params[:status].nil?
       @removal_orders = RemovalOrder.all
@@ -37,6 +43,8 @@ class RemovalOrdersController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
     if @removal_order.update(removal_order_params)
       redirect_to @removal_order
@@ -48,12 +56,24 @@ class RemovalOrdersController < ApplicationController
   end
 
   def close
-    @removal_order = RemovalOrder.find(params[:id])
     if @removal_order.close!
       redirect_to removal_orders_path
       flash[:notice] = 'Pedido encerrado com sucesso!'
     else
       flash[:alert] = 'Não foi possivel encerrado esse pedido'
+    end
+  end
+
+  def close_coop
+    if @removal_order.garbage_man_id.nil?
+      flash[:alert] = 'Não foi possivel encerrado esse pedido'
+    else
+      if @removal_order.close!
+        flash[:notice] = 'Pedido encerrado com sucesso!'
+      else
+        flash[:alert] = 'Não foi possivel encerrado esse pedido'
+      end
+      redirect_to removal_order_path
     end
   end
 
@@ -81,7 +101,7 @@ class RemovalOrdersController < ApplicationController
 
   private
 
-  def set_parms
+  def set_params
     @removal_order = RemovalOrder.find(params[:id])
   end
 

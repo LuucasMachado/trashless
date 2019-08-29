@@ -14,12 +14,26 @@
   <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
 </ul>
 
+<% if @removal_order.latitude? %>
+  <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @removal_order.latitude %>, lng: <%= @removal_order.longitude %>},
+          zoom: 12
+        });
+        var marker = new google.maps.Marker({position: {lat: <%= @removal_order.latitude %>, lng: <%= @removal_order.longitude %>}, map: map});
+      }
+    </script>
+<% end %>
+
 <% if @removal_order.open? %>
-  <% if cooperative_signed_in? %>
+  <% if cooperative_signed_in? && @removal_order.garbage_man.nil? %>
     <%= form_tag("/removal_orders/#{@removal_order.id}/accept") do %>
       <%= label_tag :garbage_man, 'Coletor'%>
       <%= select_tag :garbage_man, options_for_select(GarbageMan.all.collect {|gm| [gm.name, gm.id] }), prompt: 'Selecione um coletor' %>
-      <%= button_tag 'aceitar', type: :submit %>
+      <%= button_tag 'aceitar', class: 'btn btn-primary', type: :submit %>
     <% end %>
   <% end %>
   <h3>status: <%= @removal_order.in_progress? ? 'em andamento' : 'aberto' %> </h3>
@@ -29,6 +43,13 @@
   <h3>coletor: <%= @removal_order.garbage_man.name %> </h3>
 <% end %>
 
+<% if cooperative_signed_in? %>
+  <% unless @removal_order.close? %>
+    <span class="removal-order-<%= @removal_order.id %>" >
+      <%= link_to 'Confirmar retirada', close_coop_removal_order_path(@removal_order), method: :post %>
+    </span>
+  <% end %>
+<% end %>
 <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
 <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>
@@ -68,3 +89,4 @@
     });
   });
 </script>
+    <%= link_to 'Voltar', removal_orders_path %>

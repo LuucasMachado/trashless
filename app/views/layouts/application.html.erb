@@ -11,6 +11,8 @@
 
   <body>
     <%= render "shared/nav" %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <div class="container">
       <div class="m-3">
         <% if alert %>
@@ -26,5 +28,6 @@
       </div>
       <%= yield %>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.configuration.google_maps['key_api']%>&callback=initMap" async defer></script>
   </body>
 </html>

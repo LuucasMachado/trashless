@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       post :accept
       post :close
+      post :close_coop
     end
     collection do
       get :finished

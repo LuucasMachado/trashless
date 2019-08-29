@@ -1,6 +1,11 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_params, only: [:show, :update, :destroy, :edit, :close]
+  before_action :set_params, only: [:show,
+                                    :update,
+                                    :destroy,
+                                    :edit,
+                                    :close,
+                                    :close_coop]
   before_action :authenticate_user!, only: [:new, :finished, :create, :update]
 
   def index
@@ -52,6 +57,19 @@ class RemovalOrdersController < ApplicationController
       flash[:notice] = 'Pedido encerrado com sucesso!'
     else
       flash[:alert] = 'Não foi possivel encerrado esse pedido'
+    end
+  end
+
+  def close_coop
+    if @removal_order.garbage_man_id.nil?
+      flash[:alert] = 'Não foi possivel encerrado esse pedido'
+    else
+      if @removal_order.close!
+        flash[:notice] = 'Pedido encerrado com sucesso!'
+      else
+        flash[:alert] = 'Não foi possivel encerrado esse pedido'
+      end
+      redirect_to removal_order_path
     end
   end
 

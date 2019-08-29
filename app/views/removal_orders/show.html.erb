@@ -41,6 +41,13 @@
   <h3>coletor: <%= @removal_order.garbage_man.name %> </h3>
 <% end %>
 
+<% if cooperative_signed_in? %>
+  <% if @removal_order.open? %>
+    <span class="removal-order-<%= @removal_order.id %>" >
+      <%= link_to 'Confirmar retirada', close_coop_removal_order_path(@removal_order), method: :post %>
+    </span>
+  <% end %>
+<% end %>
 <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
 <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>

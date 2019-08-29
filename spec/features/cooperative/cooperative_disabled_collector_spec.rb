@@ -3,7 +3,11 @@ require 'rails_helper'
 feature 'Cooperative register collector' do
   scenario 'successfully' do
     user = create(:cooperative)
-    collector = GarbageMan.create(name: 'Stephen Curry do Brasil', address:'asas', contact: '111',withdrawal:'asasas', cooperative: user)
+    collector = GarbageMan.create(name: 'Stephen Curry do Brasil',
+                                  address: 'asas',
+                                  contact: '111',
+                                  withdrawal: 'asasas',
+                                  cooperative: user)
     visit root_path
     click_on 'Logar como Filial'
     fill_in 'Email', with: user.email
@@ -15,6 +19,6 @@ feature 'Cooperative register collector' do
 
     collector.reload
     expect(page).to have_content 'Coletador desativado com sucesso'
-    expect(collector.status).to eq "disabled"
+    expect(collector.status).to eq 'disabled'
   end
 end

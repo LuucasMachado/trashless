@@ -12,7 +12,7 @@ class GarbageMenController < ApplicationController
     @garbageman = GarbageMan.all
   end
 
-  def close 
+  def close
     @garbageman = GarbageMan.find(params[:id])
     @garbageman.status = :disabled
     if @garbageman.save

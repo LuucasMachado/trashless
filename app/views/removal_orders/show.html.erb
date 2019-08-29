@@ -42,7 +42,7 @@
 <% end %>
 
 <% if cooperative_signed_in? %>
-  <% if @removal_order.open? %>
+  <% unless @removal_order.close? %>
     <span class="removal-order-<%= @removal_order.id %>" >
       <%= link_to 'Confirmar retirada', close_coop_removal_order_path(@removal_order), method: :post %>
     </span>

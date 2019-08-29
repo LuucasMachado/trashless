@@ -34,6 +34,7 @@ feature 'User confirm withdrawal order' do
 
     removal_order1.reload
     removal_order2.reload
+    byebug
     expect(removal_order1.status).to eq 'close'
     expect(removal_order2.status).to eq 'open'
     expect(page).to have_content 'Pedido encerrado com sucesso!'

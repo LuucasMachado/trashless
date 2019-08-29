@@ -10,7 +10,11 @@ Rails.application.routes.draw do
       get :finished
     end  
   end
-  resources :garbage_men
+  resources :garbage_men do
+    member do
+      post :close
+    end
+  end
   root to: "home#index"
   namespace :cooperatives do
     resources :removal_orders, only: %i[index]

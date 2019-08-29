@@ -1,11 +1,11 @@
 class RemovalOrdersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_params, only: [:show,
                                     :update,
                                     :destroy,
                                     :edit,
                                     :close,
-                                    :close_coop]
+                                    :close_coop,
+                                    :accept]
   before_action :authenticate_user!, only: [:new, :finished, :create, :update]
 
   def index
@@ -25,7 +25,11 @@ class RemovalOrdersController < ApplicationController
     @removal_order = RemovalOrder.new
   end
 
-  def show; end
+  def show
+    @removal_order = RemovalOrder.find(params[:id])
+    @removal_order_problems = @removal_order.removal_order_problems
+    @removal_order_problem = RemovalOrderProblem.new
+  end
 
   def create
     @removal_order = RemovalOrder.new(removal_order_params)
@@ -81,16 +85,18 @@ class RemovalOrdersController < ApplicationController
   end
 
   def accept
-    @removal_order = RemovalOrder.find(params[:id])
     @removal_order.garbage_man = GarbageMan.find_by(id: params[:garbage_man])
+
     if @removal_order.save(context: :accept_removal_order)
       @removal_order.in_progress!
       flash[:notice] = 'Pedido aceito'
       return redirect_to @removal_order
-    else
-      flash[:alert] = 'ha algo errado'
-      render :show
     end
+
+    flash[:error] = 'ha algo errado'
+    @removal_order_problems = @removal_order.removal_order_problems
+    @removal_order_problem = RemovalOrderProblem.new
+    render :show
   end
 
   private

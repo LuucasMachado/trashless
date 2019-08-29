@@ -1,0 +1,5 @@
+<h3>Problemas reportados</h3>
+
+<% if @removal_order_problems.load.any? %>
+  <%= render @removal_order_problems %>
+  <% end %>

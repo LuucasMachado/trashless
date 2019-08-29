@@ -3,10 +3,12 @@ class RemovalOrder < ApplicationRecord
   after_validation :geocode, :description, :address, presence: true
 
   belongs_to :user
+  belongs_to :garbage_man, optional: true
   has_one_attached :photo
+
+  has_many :removal_order_problems, dependent: :destroy
   validates :weight, :removal_date_start, :removal_date_end, :address,
             presence: true
-  belongs_to :garbage_man, optional: true
   enum status: { open: 0, in_progress: 1, in_problem: 2, close: 5 }
 
   validate :garbage_man_must_exist, on: :accept_removal_order

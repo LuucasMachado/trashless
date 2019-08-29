@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_225458) do
+ActiveRecord::Schema.define(version: 2019_08_29_005101) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +56,18 @@ ActiveRecord::Schema.define(version: 2019_08_28_225458) do
     t.integer "cooperative_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "status"
     t.index ["cooperative_id"], name: "index_garbage_men_on_cooperative_id"
+  end
+
+  create_table "removal_order_problems", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "removal_order_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["removal_order_id"], name: "index_removal_order_problems_on_removal_order_id"
+    t.index ["user_id"], name: "index_removal_order_problems_on_user_id"
   end
 
   create_table "removal_orders", force: :cascade do |t|
@@ -68,10 +79,10 @@ ActiveRecord::Schema.define(version: 2019_08_28_225458) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.integer "user_id"
-    t.integer "garbage_man_id"
-    t.string "description"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.integer "garbage_man_id"
+    t.string "description"
     t.index ["garbage_man_id"], name: "index_removal_orders_on_garbage_man_id"
     t.index ["user_id"], name: "index_removal_orders_on_user_id"
   end

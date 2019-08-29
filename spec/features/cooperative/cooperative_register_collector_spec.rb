@@ -8,6 +8,7 @@ feature 'Cooperative register collector' do
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
+    click_on 'Coletador'
     click_on 'Registrar coletador'
     fill_in 'Nome', with: 'Stephen Curry do Brasil'
     fill_in 'Endereço', with: 'Rua pedro joao 223'
@@ -28,6 +29,7 @@ feature 'Cooperative register collector' do
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
+    click_on 'Coletador'
     click_on 'Registrar coletador'
     fill_in 'Nome', with: ''
     fill_in 'Endereço', with: ''
@@ -36,6 +38,5 @@ feature 'Cooperative register collector' do
     click_on 'Registra coletador'
 
     expect(page).to have_content 'Não foi possível criar o coletador'
-    expect(page).to have_content 'Registrar coletador'
   end
 end

@@ -13,12 +13,16 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
+//= require jquery-ui
 //= require popper
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function(){
+  $("[type='datetime']").datepicker()
 
-$("[type='datetime']").datepicker()
+  $("input").attr("autocomplete", "off")
+})
 
 

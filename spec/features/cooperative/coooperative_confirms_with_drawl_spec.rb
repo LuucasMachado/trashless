@@ -32,6 +32,7 @@ feature 'Cooperative confirm withdrawal order' do
     within ".removal-order-#{removal_order1.id}" do
       click_on('Ver detalhes')
     end
+    click_on('Confirmar retirada')
 
     removal_order1.reload
     removal_order2.reload

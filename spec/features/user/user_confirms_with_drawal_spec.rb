@@ -21,7 +21,6 @@ feature 'User confirm withdrawal order' do
                                          garbage_man: garbage_man,
                                          user: user, status: :open)
 
-
     visit root_path
     click_on 'Logar como Usuario'
     fill_in 'Email', with: user.email
@@ -34,7 +33,7 @@ feature 'User confirm withdrawal order' do
 
     removal_order1.reload
     removal_order2.reload
-    
+
     expect(removal_order1.status).to eq 'close'
     expect(removal_order2.status).to eq 'open'
     expect(page).to have_content 'Pedido encerrado com sucesso!'

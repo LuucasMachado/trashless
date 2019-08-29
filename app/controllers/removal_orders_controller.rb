@@ -1,6 +1,11 @@
 class RemovalOrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_params, only: [:show, :update, :destroy, :edit, :close, :close_coop]
+  before_action :set_params, only: [:show,
+                                    :update,
+                                    :destroy,
+                                    :edit,
+                                    :close,
+                                    :close_coop]
   before_action :authenticate_user!, only: [:new, :finished, :create, :update]
 
   def index
@@ -57,7 +62,8 @@ class RemovalOrdersController < ApplicationController
 
   def close_coop
     if @removal_order.garbage_man_id.nil?
-      flash[:alert] = 'Não foi possivel encerrado esse pedido pois ele não possui um coletador'
+      flash[:alert] = 'Não foi possivel encerrado esse pedido
+                       pois ele não possui um coletador'
       redirect_to removal_orders_path
     else
       if @removal_order.close!

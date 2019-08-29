@@ -4,19 +4,18 @@ feature 'Cooperative register collector' do
   scenario 'successfully' do
     lucas = User.create(email: 'lucas@gmail.com', password: '123456')
     RemovalOrder.create!(weight: 10,
-                        removal_date_start: '08/09/2019',
-                        removal_date_end: '02/10/2019',
-                        address: 'rua das bolinhas n 02',
-                        description: 'Material feito de ferro',
-                        address: 'avenida paulista',
-                        user: lucas, status: :open)
+                         removal_date_start: '08/09/2019',
+                         removal_date_end: '02/10/2019',
+                         description: 'Material feito de ferro',
+                         address: 'avenida paulista',
+                         user: lucas, status: :open)
     maria = User.create!(email: 'maria@gmail.com', password: '654321')
     RemovalOrder.create!(weight: 15,
-                        removal_date_start: '01/09/2019',
-                        removal_date_end: '12/09/2019',
-                        address: 'rua das batatas 34',
-                        description: 'Material feito de ferro',
-                        user: maria, status: :close)
+                         removal_date_start: '01/09/2019',
+                         removal_date_end: '12/09/2019',
+                         address: 'rua das batatas 34',
+                         description: 'Material feito de ferro',
+                         user: maria, status: :close)
 
     user = create(:cooperative, address: 'rua barra funda')
     visit root_path

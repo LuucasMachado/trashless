@@ -10,7 +10,7 @@ class RemovalOrder < ApplicationRecord
   enum status: { open: 0, in_progress: 1, in_problem: 2, close: 5 }
 
   validate :garbage_man_must_exist, on: :accept_removal_order
-  
+
   def garbage_man_must_exist
     errors.add(:garbar_man, 'Necessário indicar um coletor') if garbage_man.nil?
   end

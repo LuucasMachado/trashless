@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2019_08_29_005101) do
     t.index ["cooperative_id"], name: "index_garbage_men_on_cooperative_id"
   end
 
+  create_table "removal_order_problems", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "removal_order_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["removal_order_id"], name: "index_removal_order_problems_on_removal_order_id"
+    t.index ["user_id"], name: "index_removal_order_problems_on_user_id"
+  end
+
   create_table "removal_orders", force: :cascade do |t|
     t.decimal "weight"
     t.datetime "removal_date_start"

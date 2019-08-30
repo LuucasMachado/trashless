@@ -1,18 +1,18 @@
 <% if @removal_order.errors.any? %>
   <% @removal_order.errors.full_messages.each do |message|%>
     <%= message %>
-  <% end %>  
+  <% end %>
 <% end %>
 
 <h1>Detalhes do pedido</h1>
-  <ul>
-    <li>Peso <%= @removal_order.weight %> kg</li>
-    <li>Data retirada inicio <%= l @removal_order.removal_date_start, format: :custom %></li>
-    <li>Data retirada fim <%= l @removal_order.removal_date_end, format: :custom  %></li>
-    <li>Endereço <%= @removal_order.address %></li>
-    <li>Descrição <%= @removal_order.description %></li>
-    <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
-  </ul>
+<ul>
+  <li>Peso <%= @removal_order.weight %> kg</li>
+  <li>Data retirada inicio <%= l @removal_order.removal_date_start, format: :custom %></li>
+  <li>Data retirada fim <%= l @removal_order.removal_date_end, format: :custom  %></li>
+  <li>Endereço <%= @removal_order.address %></li>
+  <li>Descrição <%= @removal_order.description %></li>
+  <li><%= image_tag @removal_order.photo if @removal_order.photo.attached? %></li>
+</ul>
 
 <% if @removal_order.latitude? %>
   <div id="map"></div>
@@ -53,4 +53,40 @@
 <%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
 <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>
+
+<a href="javascript:;" id="report_problem" class="btn btn-danger">Reportar um problema</a>
+<%= form_with model: [@removal_order, @removal_order_problem], html: { class: 'd-none needs-validation',
+                                                                       id: 'new_removal_order_problem',
+                                                                       novalidate: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: 'form-control', required: true %>
+  </div>
+  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+<% end %>
+
+<div id="removal_order_problem">
+    <%= render partial: 'removal_order_problems/removal_order_problems' %>
+</div>
+
+<script>
+  $('#report_problem').on("click", function() {
+    $('#new_removal_order_problem').removeClass('d-none');
+  } );
+
+  $(document).ready(function() {
+    $("#new_removal_order_problem").on("ajax:success", function(event) {
+      $('#removal_order_problem_comment').val('');
+      $('#new_removal_order_problem').removeClass('has-error');
+      $('.help-block').remove();
+    }).on("ajax:error", function(event) {
+      if(!$(this).hasClass('has-error')) {
+        $('#removal_order_problem_comment').addClass('has-error');
+        message = "<%= t('removal_order_problem.error.message') %>";
+        $('#removal_order_problem_comment').parent()
+          .append('<span class="help-block">' + message + '</span>');
+      }
+    });
+  });
+</script>
     <%= link_to 'Voltar', removal_orders_path %>

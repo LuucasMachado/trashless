@@ -11,18 +11,16 @@
       <li>Data de retirada: <%= l removal_order.removal_date_start, format: :custom %></li>
       <li>Limite de retirada: <%= l removal_order.removal_date_end, format: :custom  %></li>
       <li>Endereço: <%= removal_order.address %></li>
-      <li><%= link_to 'Ver detalhes', removal_order_path(removal_order) %></li>
+      <%= link_to 'Ver detalhes', removal_order_path(removal_order), class:"btn btn-info" %>
         <% if removal_order.open? %>
-          <li>
             <span class="removal-order-<%= removal_order.id %>" >
-              <%= link_to 'Confirmar retirada', close_removal_order_path(removal_order), method: :post %>
+              <%= link_to 'Confirmar retirada', close_removal_order_path(removal_order), method: :post, class:"btn btn-primary" %>
             </span>
-          </li>
         <% end %>
       <li>
         status: <%= t removal_order.status, 
                         scope: [:activerecord, :attributes, 
-                                :removal_order, :status] %>
+                                :removal_order, :status]%>
       </li>
     </ul> 
   <% end %>

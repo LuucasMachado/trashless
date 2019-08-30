@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_005101) do
+ActiveRecord::Schema.define(version: 2019_08_30_171418) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,13 +61,14 @@ ActiveRecord::Schema.define(version: 2019_08_29_005101) do
   end
 
   create_table "removal_order_problems", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "removal_order_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ownable_type"
+    t.integer "ownable_id"
+    t.index ["ownable_type", "ownable_id"], name: "index_removal_order_problems_on_ownable_type_and_ownable_id"
     t.index ["removal_order_id"], name: "index_removal_order_problems_on_removal_order_id"
-    t.index ["user_id"], name: "index_removal_order_problems_on_user_id"
   end
 
   create_table "removal_orders", force: :cascade do |t|

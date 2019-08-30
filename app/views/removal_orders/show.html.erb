@@ -58,16 +58,19 @@
 <%= link_to 'Apagar pedido', @removal_order, method: :delete,
         data: { confirm: " Você quer deletar?"} %>
 
+<% if user_signed_in? %>
 <a href="javascript:;" id="report_problem" class="btn btn-danger">Reportar um problema</a>
-<%= form_with model: [@removal_order, @removal_order_problem], html: { class: 'd-none needs-validation',
-                                                                       id: 'new_removal_order_problem',
-                                                                       novalidate: true } do |f| %>
-  <div class="form-group">
-    <%= f.label :comment %>
-    <%= f.text_area :comment, class: 'form-control', required: true %>
-  </div>
-  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
-<% end %>
+  <%= form_with model: [@removal_order, @removal_order_problem], html: { class: 'd-none needs-validation',
+                                                                        id: 'new_removal_order_problem',
+                                                                        novalidate: true } do |f| %>
+                                                                    
+    <div class="form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control', required: true %>
+    </div>
+    <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>  
 
 <div id="removal_order_problem">
     <%= render partial: 'removal_order_problems/removal_order_problems' %>

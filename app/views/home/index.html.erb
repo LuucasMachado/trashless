@@ -1,38 +1,14 @@
-<%# if @cooperative.lat %>
-<div id="map" class="map-root"></div>
-<script>
-  var lat;
-  var lng;
-  
-  navigator.geolocation.getCurrentPosition(function(position) {
-    lat = position.coords.latitude
-    lng = position.coords.longitude
-  })
 
-  var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: -23.5646482,
-          lng: -46.657201
-        },
-        zoom: 15
-      });
-      <% RemovalOrder.all.each_with_index do |location, index| %>
-        <% if location.latitude && location.longitude %>
-            new google.maps.Marker({
-              position: {
-                lat: <%= location.latitude %>,
-                lng: <%= location.longitude %>
-              },
-                map: map,
-                zIndex: <%= index + 1 %>
-            })
-        <% end %>
-      <% end %>
-    }
-</script>
-<%# end %>
+<div class="row d-flex justify-content-center align-items-center flex-column">
+    <%= image_tag 'TRASHLESS.png', size: '250', class:'m-4' %>
+    <div> <%= image_tag 'earth.gif', size: '100', class:'m-4' %> </div>
+    <h4>Em busca de um mundo melhor!</h4>
+</div>
+<% if cooperative_signed_in? && @cooperative && @cooperative.lat %>
+  <%= render 'coop_home' %>
+<% else %> 
+  <%= render 'guest_home' %>
+<% end %>
 
 <% unless user_signed_in? || cooperative_signed_in? %>
   <!-- Portfolio Section -->

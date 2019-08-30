@@ -3,19 +3,19 @@
    <%= image_tag 'TRASHLESS.png', size: '150' %>
     <h1 class="h3 mb-3 font-weight-normal">Login de Filial</h1>
     <div class="field">
-      <%= f.label :email, 'Email' %><br />
+      <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :password, 'Senha' %><br />
+      <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="field">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me,'Relembrar' %>
+        <%= f.label :remember_me %>
       </div>
     <% end %>
 

@@ -31,5 +31,6 @@ module Trashless
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.i18n.default_locale = :"pt-BR"
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end

@@ -23,6 +23,7 @@ feature 'Cooperative confirm withdrawal order' do
                                          address: 'rua das figueiras',
                                          description: 'Material feito de ferro',
                                          user: user, status: :open)
+    allow(RemovalOrder).to receive(:near).and_return([])
 
     visit root_path
     click_on 'Logar como Filial'

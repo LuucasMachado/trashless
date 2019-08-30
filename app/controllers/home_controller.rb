@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     return render :index unless cooperative_signed_in?
 
     @cooperative = current_cooperative
-    @removal_orders = RemovalOrder.near(@cooperative)
+    @removal_orders = RemovalOrder.near(@cooperative.address)
     render 'cooperatives/index'
   end
 end

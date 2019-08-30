@@ -1,0 +1,10 @@
+<%= link_to 'Registrar coletador', new_garbage_man_path, class: 'nav-link' %>
+
+<% if @garbageman.any? %>
+  <% @garbageman.each do |garbagemen| %>
+    <p>Nome: <%= link_to garbagemen.name, garbagemen %></p>
+    <p>Endereço: <%= garbagemen.address %></p>
+    <p>Contato: <%= garbagemen.contact %></p>
+    <p>Meio de retirada: <%= garbagemen.withdrawal %></p>
+  <% end %>
+<% end %>

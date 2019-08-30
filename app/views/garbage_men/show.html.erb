@@ -2,3 +2,4 @@
 <p>Endereço: <%= @garbageman.address %></p>
 <p>Contato: <%= @garbageman.contact %></p>
 <p>Meio de retirada: <%= @garbageman.withdrawal %></p>
+<%= link_to 'Desativar coletador',  close_garbage_man_path(@garbageman), method: :post %>

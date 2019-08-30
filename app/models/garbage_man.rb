@@ -5,4 +5,5 @@ class GarbageMan < ApplicationRecord
             :address,
             :contact,
             :withdrawal, presence: true
+  enum status: { enable: 0, disabled: 1, cancel: 2 }
 end

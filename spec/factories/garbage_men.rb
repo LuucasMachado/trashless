@@ -4,6 +4,6 @@ FactoryBot.define do
     address { 'MyString' }
     contact { 'MyString' }
     withdrawal { 'MyString' }
-    cooperative { nil }
+    cooperative
   end
 end

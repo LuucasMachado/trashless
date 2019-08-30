@@ -8,6 +8,21 @@ class GarbageMenController < ApplicationController
     @garbageman = GarbageMan.find(params[:id])
   end
 
+  def index
+    @garbageman = GarbageMan.all
+  end
+
+  def close
+    @garbageman = GarbageMan.find(params[:id])
+    @garbageman.status = :disabled
+    if @garbageman.save
+      flash[:notice] = 'Coletador desativado com sucesso'
+      redirect_to garbage_men_path(@garbageman)
+    else
+      flash[:alert] = 'Não foi possivel desativar esse coletador'
+    end
+  end
+
   def create
     @garbageman = GarbageMan.new(garbageman_params)
     @garbageman.cooperative = current_cooperative

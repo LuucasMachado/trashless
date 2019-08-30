@@ -28,7 +28,7 @@ feature 'User register removal order' do
 
   scenario 'com datas de inicio invalida' do
     user = create(:user, email: 'lucas@hotmail.com')
-    
+
     visit root_path
     click_on 'Logar como Usuario'
     fill_in 'Email', with: user.email
@@ -36,7 +36,7 @@ feature 'User register removal order' do
     click_on 'Logar'
     click_on 'Registrar coleta'
     fill_in 'Peso', with: '244'
-    fill_in 'Data retirada inicio', with: Date.today - 1.day
+    fill_in 'Data retirada inicio', with: '14/08/2019'
     fill_in 'Limite de retirada', with: '14/08/2019'
     fill_in 'Endereço', with: 'Rua Ruan Juan Jackson'
     fill_in 'Descrição', with: 'sao 244kg de ferro 2x2'
@@ -46,7 +46,7 @@ feature 'User register removal order' do
   end
   scenario 'com datas de fim invalida' do
     user = create(:user, email: 'lucas@hotmail.com')
-    
+
     visit root_path
     click_on 'Logar como Usuario'
     fill_in 'Email', with: user.email
@@ -54,8 +54,8 @@ feature 'User register removal order' do
     click_on 'Logar'
     click_on 'Registrar coleta'
     fill_in 'Peso', with: '244'
-    fill_in 'Data retirada inicio', with: Date.tomorrow
-    fill_in 'Limite de retirada', with: Date.today
+    fill_in 'Data retirada inicio', with: '14/08/2019'
+    fill_in 'Limite de retirada', with: '14/08/2019'
     fill_in 'Endereço', with: 'Rua Ruan Juan Jackson'
     fill_in 'Descrição', with: 'sao 244kg de ferro 2x2'
     attach_file 'Foto', Rails.root.join('spec', 'support', 'lixo.jpeg')

@@ -1,25 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user = User.create(email: 'user@email.com', password: '12345678');
+coop = Cooperative.create(email: 'coop@email.com', password: '12345678');
+garbage_man = GarbageMan.create( name: 'Lucas', address: 'Rua ibituruna', contact: '1198899888', withdrawal: 'Caminhão', cooperative: coop)
+garbage_man1 = GarbageMan.create( name: 'Josy', address: 'Rua napoleao de barros', contact: '1198899888', withdrawal: 'Caminhão', cooperative: coop)
+garbage_man2 = GarbageMan.create( name: 'Josy', address: 'Rua ibituruna', contact: '1198899888', withdrawal: 'Caminhão', cooperative: coop)
 
-users = [
-  {
-    email: Faker::Internet.email,
-    password: "123321"
-  },
-  {
-    email: Faker::Internet.email,
-    password: "123321"
-  },
-]
 
-users.each do |coop|
-  User.create(email: coop[:email], password: coop[:password])
-end
+removal_order1 = RemovalOrder.create(weight: 10,
+                                     removal_date_start: '01/09/2000',
+                                     removal_date_end: '02/09/2000',
+                                     address: 'rua das figueiras',
+                                     description: 'Material feito de ferro',
+                                     garbage_man: garbage_man,
+                                     user: user, status: :open)
+
+removal_order2 = RemovalOrder.create(weight: 29,
+                                     removal_date_start: '06/09/2000',
+                                     removal_date_end: '08/09/2000',
+                                     address: 'Rua Borges Lagoa',
+                                     description: 'Material feito de plastico',
+                                     garbage_man: garbage_man1,
+                                     user: user, status: :open)
+removal_order3 = RemovalOrder.create(weight: 39,
+                                     removal_date_start: '06/09/2000',
+                                     removal_date_end: '08/09/2000',
+                                     address: 'Rua Ipiranga',
+                                     description: 'Material feito de papel',
+                                     garbage_man: garbage_man1,
+                                     user: user, status: :close)
+
+                                     
+                                     
+removal_order4 = RemovalOrder.create(weight: 919,
+                                      removal_date_start: '06/09/2000',
+                                      removal_date_end: '08/09/2000',
+                                      address: 'Rua Margarida',
+                                      description: 'Lata de tinta',
+                                      user: user, status: :open)
 
 addresses = [
   'rua barra funda',
@@ -28,42 +44,22 @@ addresses = [
   'bairro jardim',
   'sao paulo',
   'rua napoleao',
-  'rua ibituruna'
+  'rua ibituruna',
+  'alameda santos 1293',
+  'alameda santos 12',
+  'alameda santos 928',
+  'alameda santos 1050',
+  'alameda franca',
+  'rua pamplona',
+  'rua pamplona',
+  'alameda jaú'
 ]
-
+                                      
 addresses.each do |address|
-  RemovalOrder.create!(user: User.first, 
-                       address: address, 
-                       weight: 10.0, 
-                       removal_date_start: Date.today, 
-                       removal_date_end: Date.today + 1,
-                       description: "remover lixo em #{address}"
-                      )
+  RemovalOrder.create(weight: 919,
+    removal_date_start: '06/09/2000',
+    removal_date_end: '08/09/2000',
+    address: address,
+    description: 'Lata de tinta',
+    user: user, status: :open)
 end
-
-user = User.create(email: 'user@email.com', password: '12345678')
-coop = Cooperative.create(email: 'coop@email.com', password: '12345678')
-garbage_man = FactoryBot.create(:garbage_man, name: 'Lucas', cooperative: coop)
-              FactoryBot.create(:garbage_man, name: 'Josy', cooperative: coop)
-              FactoryBot.create(:garbage_man, name: 'Matheus', cooperative: coop)
-RemovalOrder.create(weight: 10,
-                   removal_date_start: '01/09/2000',
-                   removal_date_end: '02/09/2000',
-                   address: 'rua das bolinhas n 02',
-                   description: 'Material feito de ferro',
-                   garbage_man: garbage_man,
-                   user: user, status: :open)
-RemovalOrder.create(weight: 200,
-   removal_date_start: '01/09/2000',
-   removal_date_end: '02/09/2000',
-   address: 'rua das bolinhas n 02',
-   description: 'Material feito de ferro',
-   garbage_man: garbage_man,
-   user: user, status: :close)
-RemovalOrder.create(weight: 10,
-                   removal_date_start: '01/09/2000',
-                   removal_date_end: '02/09/2000',
-                   address: 'rua das bolinhas n 02',
-                   description: 'Material feito de ferro',
-                   garbage_man: garbage_man,
-                   user: user, status: :close)

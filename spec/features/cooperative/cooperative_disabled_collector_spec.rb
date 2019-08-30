@@ -10,7 +10,7 @@ feature 'Cooperative register collector' do
                                   cooperative: user)
     allow(RemovalOrder).to receive(:near).and_return([])
     visit root_path
-    click_on 'Logar como Filial'
+    click_on 'LOGAR COMO FILIAL'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'

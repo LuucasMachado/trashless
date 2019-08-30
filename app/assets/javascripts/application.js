@@ -17,6 +17,6 @@
 //= require popper
 //= require bootstrap
 //= require turbolinks
-
+//= require init_datepicker
 
 

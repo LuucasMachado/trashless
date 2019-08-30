@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     address = [:address]
     devise_parameter_sanitizer.permit :sign_up, keys: address
   end
+
+  def user_or_coop_signed_in?
+    user_signed_in? || cooperative_signed_in?
+  end
 end

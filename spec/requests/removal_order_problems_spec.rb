@@ -6,6 +6,6 @@ describe 'Removal order problems' do
 
     post removal_order_removal_order_problems_path(removal_order), params: {}
 
-    expect(response).to redirect_to(new_user_session_path)
+    expect(response).to redirect_to(root_path)
   end
 end

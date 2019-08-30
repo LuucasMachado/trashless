@@ -11,7 +11,7 @@
       <li>Data de retirada: <%= l removal_order.removal_date_start, format: :custom %></li>
       <li>Limite de retirada: <%= l removal_order.removal_date_end, format: :custom  %></li>
       <li>Endereço: <%= removal_order.address %></li>
-      <li>Endereço: <%= link_to 'Ver detalhes', removal_order_path(removal_order) %></li>
+      <li><%= link_to 'Ver detalhes', removal_order_path(removal_order) %></li>
         <% if removal_order.open? %>
           <li>
             <span class="removal-order-<%= removal_order.id %>" >

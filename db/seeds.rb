@@ -6,30 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-coops = [
-  {
-    email: "bragamat@trashless.com",
-    password: "123321"
-  },
-  {
-    email: "matbragabyebug@trashless.com",
-    password: "123321"
-  },
-]
-
 users = [
   {
-    email: "braa@trashless.com",
+    email: Faker::Internet.email,
     password: "123321"
   },
   {
-    email: "matt@trashless.com",
+    email: Faker::Internet.email,
     password: "123321"
   },
 ]
 
 users.each do |coop|
-  User.create!(email: coop[:email], password: coop[:password])
+  User.create(email: coop[:email], password: coop[:password])
 end
 
 addresses = [
@@ -44,19 +33,19 @@ addresses = [
 
 addresses.each do |address|
   RemovalOrder.create!(user: User.first, 
-                      address: address, 
-                      weight: 10.0, 
-                      removal_date_start: Date.today, 
-                      removal_date_end: Date.today + 1,
-                      description: "remover lixo em #{address}"
+                       address: address, 
+                       weight: 10.0, 
+                       removal_date_start: Date.today, 
+                       removal_date_end: Date.today + 1,
+                       description: "remover lixo em #{address}"
                       )
 end
 
 user = User.create(email: 'user@email.com', password: '12345678')
 coop = Cooperative.create(email: 'coop@email.com', password: '12345678')
-garbage_man = create(:garbage_man, name: 'Lucas' cooperative: coop)
-             create(:garbage_man, name: 'Josy' cooperative: coop)
-             create(:garbage_man, name: 'Matheus' cooperative: coop)
+garbage_man = FactoryBot.create(:garbage_man, name: 'Lucas', cooperative: coop)
+              FactoryBot.create(:garbage_man, name: 'Josy', cooperative: coop)
+              FactoryBot.create(:garbage_man, name: 'Matheus', cooperative: coop)
 RemovalOrder.create(weight: 10,
                    removal_date_start: '01/09/2000',
                    removal_date_end: '02/09/2000',

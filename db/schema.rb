@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 2019_08_29_005101) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.integer "user_id"
-    t.decimal "latitude"
-    t.decimal "longitude"
     t.integer "garbage_man_id"
     t.string "description"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.index ["garbage_man_id"], name: "index_removal_orders_on_garbage_man_id"
     t.index ["user_id"], name: "index_removal_orders_on_user_id"
   end

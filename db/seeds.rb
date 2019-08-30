@@ -29,18 +29,12 @@ removal_order3 = RemovalOrder.create(weight: 39,
                                      garbage_man: garbage_man1,
                                      user: user, status: :close)
 
-
-removal_order3 = RemovalOrder.create(weight: 99,
-                                     removal_date_start: '06/09/2000',
-                                     removal_date_end: '08/09/2000',
-                                     address: 'Rua Flor',
-                                     description: 'Material feito de aluminio',
-                                     user: user, status: :open)       
                                      
                                      
-  removal_order3 = RemovalOrder.create(weight: 919,
+removal_order4 = RemovalOrder.create(weight: 919,
                                       removal_date_start: '06/09/2000',
                                       removal_date_end: '08/09/2000',
                                       address: 'Rua Margarida',
                                       description: 'Lata de tinta',
                                       user: user, status: :open)   
+

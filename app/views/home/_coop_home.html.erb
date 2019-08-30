@@ -1,0 +1,25 @@
+<div id="map" class="map-root"></div>
+<script>
+  var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat:  <%= @cooperative.lat %>,
+          lng:  <%= @cooperative.lng %>
+        },
+        zoom: 15
+      });
+      <% @removal_order.each_with_index do |location, index| %>
+        <% if location.latitude && location.longitude %>
+            new google.maps.Marker({
+              position: {
+                lat: <%= location.latitude %>,
+                lng: <%= location.longitude %>
+              },
+                map: map,
+                zIndex: <%= index + 1 %>
+            })
+        <% end %>
+      <% end %>
+    }
+</script>

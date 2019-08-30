@@ -5,7 +5,7 @@ feature 'User register removal order' do
     user = create(:user, email: 'lucas@hotmail.com')
 
     visit root_path
-    click_on 'Logar como Usuario'
+    click_on 'LOGAR COMO USUÁRIO'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
@@ -29,7 +29,7 @@ feature 'User register removal order' do
     user = create(:user, email: 'lucas@hotmail.com', password: '123321')
 
     visit root_path
-    click_on 'Logar como Usuario'
+    click_on 'LOGAR COMO USUÁRIO'
     fill_in 'Email', with: 'lucas@hotmail.com'
     fill_in 'Senha', with: user.password
     click_on 'Logar'

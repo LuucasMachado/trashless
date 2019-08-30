@@ -50,13 +50,16 @@
 <% if cooperative_signed_in? %>
   <% unless @removal_order.close? %>
     <span class="removal-order-<%= @removal_order.id %>" >
-      <%= link_to 'Confirmar retirada', close_coop_removal_order_path(@removal_order), method: :post %>
+      <%= link_to 'Confirmar retirada', close_coop_removal_order_path(@removal_order), method: :post, class:"btn btn-success" %>
     </span>
   <% end %>
 <% end %>
-<%= link_to 'Editar', edit_removal_order_path(@removal_order) %>
-<%= link_to 'Apagar pedido', @removal_order, method: :delete,
-        data: { confirm: " Você quer deletar?"} %>
+<% if user_signed_in? %>
+  <%= link_to 'Editar', edit_removal_order_path(@removal_order), class: "btn btn-secondary" %>
+  <%= link_to 'Apagar pedido', @removal_order, method: :delete,
+          data: { confirm: " Você quer deletar?"}, class: "btn btn-warning" %>
+<% end %> <br>
+
 
 <% if user_signed_in? %>
 <a href="javascript:;" id="report_problem" class="btn btn-danger">Reportar um problema</a>
@@ -96,4 +99,4 @@
     });
   });
 </script>
-    <%= link_to 'Voltar', removal_orders_path %>
+    <%= link_to 'Voltar', removal_orders_path, class:"btn btn-primary" %>

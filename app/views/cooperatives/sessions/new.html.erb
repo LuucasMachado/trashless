@@ -1,26 +1,27 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, 'Email' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, 'Senha' %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-signin') do |f| %>
+   <%= image_tag 'TRASHLESS.png', size: '150' %>
+    <h1 class="h3 mb-3 font-weight-normal">Login de Filial</h1>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email, 'Email' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, 'Senha' %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me,'Relembrar' %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Logar", class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Logar" %>
-  </div>
-<% end %>
-
-<%= render "cooperatives/shared/links" %>
+</div>
+<div class="mt-5"> <%= render "cooperatives/shared/links" %> <div class="mt-5"> 

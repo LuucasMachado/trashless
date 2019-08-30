@@ -1,0 +1,10 @@
+
+en:
+  activerecord:
+    models:
+      cooperative: Filial
+    attributes:
+      cooperative:
+        email: 'E-mail'
+        password: 'Senha'
+        address: 'endereço'

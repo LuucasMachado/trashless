@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :garbage_man do
     name { 'MyString' }
-    address { 'MyString' }
+    address { 'Rua Napoleao' }
     contact { 'MyString' }
     withdrawal { 'MyString' }
     cooperative

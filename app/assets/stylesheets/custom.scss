@@ -1,0 +1,9 @@
+$error-color: #dc3545;
+
+.has-error {
+  border-color: $error-color;
+}
+
+.help-block {
+  color: $error-color;
+}

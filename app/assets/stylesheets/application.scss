@@ -14,8 +14,9 @@
  *= require_self
  *= require jquery-ui
  */
- 
+
  @import "bootstrap";
+ @import "custom";
 
  #map {
   height: 400px;

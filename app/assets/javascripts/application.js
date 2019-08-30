@@ -17,7 +17,6 @@
 //= require popper
 //= require bootstrap
 //= require turbolinks
-//= require_tree .
 
 $(document).ready(function(){
   $("[type='datetime']").datepicker({

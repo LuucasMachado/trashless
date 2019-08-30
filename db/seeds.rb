@@ -39,7 +39,15 @@ addresses = [
   'bairro jardim',
   'sao paulo',
   'rua napoleao',
-  'rua ibituruna'
+  'rua ibituruna',
+  'alameda santos 1293',
+  'alameda santos 12',
+  'alameda santos 928',
+  'alameda santos 1050',
+  'alameda franca',
+  'rua pamplona',
+  'rua pamplona',
+  'alameda jaú'
 ]
 
 addresses.each do |address|

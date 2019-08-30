@@ -15,7 +15,7 @@
     <li>Data retirada fim <%= l @removal_order.removal_date_end, format: :custom  %></li>
     <li>Endereço <%= @removal_order.address %></li>
     <li>Descrição <%= @removal_order.description %></li>
-    <li><%= image_tag @removal_order.photo, size: "150" if @removal_order.photo.attached? %></li>
+    <%= image_tag @removal_order.photo, size: "150" if @removal_order.photo.attached? %>
   </ul>
 
 <% if @removal_order.latitude? %>
@@ -60,8 +60,6 @@
           data: { confirm: " Você quer deletar?"}, class: "btn btn-warning" %>
 <% end %> <br>
 
-
-<% if user_signed_in? %>
 <a href="javascript:;" id="report_problem" class="btn btn-danger">Reportar um problema</a>
   <%= form_with model: [@removal_order, @removal_order_problem], html: { class: 'd-none needs-validation',
                                                                         id: 'new_removal_order_problem',
@@ -73,7 +71,6 @@
     </div>
     <%= f.submit 'Enviar', class: 'btn btn-primary' %>
   <% end %>
-<% end %>  
 
 <div id="removal_order_problem">
     <%= render partial: 'removal_order_problems/removal_order_problems' %>

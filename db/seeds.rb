@@ -51,3 +51,30 @@ addresses.each do |address|
                       description: "remover lixo em #{address}"
                       )
 end
+
+user = User.create(email: 'user@email.com', password: '12345678')
+coop = Cooperative.create(email: 'coop@email.com', password: '12345678')
+garbage_man = create(:garbage_man, name: 'Lucas' cooperative: coop)
+             create(:garbage_man, name: 'Josy' cooperative: coop)
+             create(:garbage_man, name: 'Matheus' cooperative: coop)
+RemovalOrder.create(weight: 10,
+                   removal_date_start: '01/09/2000',
+                   removal_date_end: '02/09/2000',
+                   address: 'rua das bolinhas n 02',
+                   description: 'Material feito de ferro',
+                   garbage_man: garbage_man,
+                   user: user, status: :open)
+RemovalOrder.create(weight: 200,
+   removal_date_start: '01/09/2000',
+   removal_date_end: '02/09/2000',
+   address: 'rua das bolinhas n 02',
+   description: 'Material feito de ferro',
+   garbage_man: garbage_man,
+   user: user, status: :close)
+RemovalOrder.create(weight: 10,
+                   removal_date_start: '01/09/2000',
+                   removal_date_end: '02/09/2000',
+                   address: 'rua das bolinhas n 02',
+                   description: 'Material feito de ferro',
+                   garbage_man: garbage_man,
+                   user: user, status: :close)

@@ -20,7 +20,6 @@ removal_order2 = RemovalOrder.create(weight: 29,
                                      description: 'Material feito de plastico',
                                      garbage_man: garbage_man1,
                                      user: user, status: :open)
-
 removal_order3 = RemovalOrder.create(weight: 39,
                                      removal_date_start: '06/09/2000',
                                      removal_date_end: '08/09/2000',
@@ -36,5 +35,31 @@ removal_order4 = RemovalOrder.create(weight: 919,
                                       removal_date_end: '08/09/2000',
                                       address: 'Rua Margarida',
                                       description: 'Lata de tinta',
-                                      user: user, status: :open)   
+                                      user: user, status: :open)
 
+addresses = [
+  'rua barra funda',
+  'avenida paulista',
+  'avenida 23 de maio',
+  'bairro jardim',
+  'sao paulo',
+  'rua napoleao',
+  'rua ibituruna',
+  'alameda santos 1293',
+  'alameda santos 12',
+  'alameda santos 928',
+  'alameda santos 1050',
+  'alameda franca',
+  'rua pamplona',
+  'rua pamplona',
+  'alameda jaú'
+]
+                                      
+addresses.each do |address|
+  RemovalOrder.create(weight: 919,
+    removal_date_start: '06/09/2000',
+    removal_date_end: '08/09/2000',
+    address: address,
+    description: 'Lata de tinta',
+    user: user, status: :open)
+end

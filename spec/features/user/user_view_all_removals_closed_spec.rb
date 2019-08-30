@@ -17,7 +17,7 @@ feature 'User view all orders open' do
                         user: user, status: :open)
 
     visit root_path
-    click_on 'Logar como Usuario'
+    click_on 'LOGAR COMO USUÁRIO'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'
@@ -51,7 +51,7 @@ feature 'User view all orders open' do
                         user: maria, status: :close)
 
     visit root_path
-    click_on 'Logar como Usuario'
+    click_on 'LOGAR COMO USUÁRIO'
     fill_in 'Email', with: joao.email
     fill_in 'Senha', with: joao.password
     click_on 'Logar'

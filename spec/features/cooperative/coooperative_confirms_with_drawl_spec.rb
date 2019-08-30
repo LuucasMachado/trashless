@@ -26,7 +26,7 @@ feature 'Cooperative confirm withdrawal order' do
     allow(RemovalOrder).to receive(:near).and_return([])
 
     visit root_path
-    click_on 'Logar como Filial'
+    click_on 'LOGAR COMO FILIAL'
     fill_in 'Email', with: cooperative.email
     fill_in 'Senha', with: cooperative.password
     click_on 'Logar'

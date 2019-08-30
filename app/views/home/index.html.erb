@@ -34,6 +34,7 @@
 </script>
 <%# end %>
 
+<% unless user_signed_in? || cooperative_signed_in? %>
   <!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
@@ -228,3 +229,5 @@
 
     </div>
   </section>
+
+<% end%>

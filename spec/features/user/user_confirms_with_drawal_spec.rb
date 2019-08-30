@@ -22,7 +22,7 @@ feature 'User confirm withdrawal order' do
                                          user: user, status: :open)
 
     visit root_path
-    click_on 'Logar como Usuario'
+    click_on 'LOGAR COMO USUÁRIO'
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Logar'

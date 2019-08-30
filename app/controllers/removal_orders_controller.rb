@@ -6,12 +6,10 @@ class RemovalOrdersController < ApplicationController
                                     :close,
                                     :close_coop,
                                     :accept]
-  before_action :authenticate_user!, only: [:new, 
-                                            :finished, 
-                                            :create, 
-                                            :update, 
-                                            :close, 
-                                            :close_coop]
+  before_action :authenticate_user!, only: [:new,
+                                            :finished,
+                                            :create,
+                                            :update]
 
   def index
     if params[:status].nil?

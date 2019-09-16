@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: rails s -b 0.0.0.0
+    container_name: trashless
+    ports:
+      - 80:3000
+      - 443:443
+    volumes:
+      - .:/trashless
+    links:
+      - db
+    env_file:
+      - .env.docker
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:11.5-alpine
+    ports:
+      - 5432:5432
+    env_file:
+      .env.docker
+    volumes:
+      - trashless-data:/var/lib/postgresql/data
+volumes:
+  trashless-data:
